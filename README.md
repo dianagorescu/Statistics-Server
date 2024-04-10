@@ -5,43 +5,41 @@ Gorescu Diana,
 
 Organizare
 -
-1. In *data_ingestor.py* am citit setul de date în format *csv*. Am creat o lista de dictionare (1 dictionar reprezinta 1 rand citit). Uitandu-ma in trecut, mi se pare o abordare naiva, intrucat as fi putut accesa datele mai eficient.
-2. In ThreadPool imi transfer datele citite si cele 2 liste de intrebari pentru taskul *best5* si *worst5*; initializez numarul de threaduri; initializez o coada Queue pentru sincronizarea joburilor, iar la final creez si lansez threadurile din lista. In plus, nefolosind ThreadPoolExecutor, a trebuit sa mi definesc eu o functia de shutdown in care dau join la threaduri.
+1. În *data_ingestor.py* am citit setul de date în format *csv*. Am creat o lista de dicționare (1 dicționar reprezintă 1 rând citit). Uitându-mă în trecut, mi se pare o abordare naivă, întrucât aș fi putut accesa datele mai eficient.
+2. În ThreadPool îmi transfer datele citite și cele 2 liste de întrebări pentru taskul *best5* și *worst5*; initializez numărul de threaduri; initializez o coadă Queue pentru sincronizarea joburilor, iar la final creez și lansez threadurile din lista. În plus, nefolosind ThreadPoolExecutor, a trebuit să mi definesc eu o funcția de shutdown în care dau join la threaduri.\
+În metodă *run()* din clasa TaskRunner apelez funcția cu numele jobului. Rezultatul acestuia este scris în format json într-un fișier. Așadar, jobul fiind terminat, îl adaug într-o lista specifică și actualizez și statusul acestuia. În aceeași clasa am implementat pe rând funcții pentru cererile de implementat.
+3. Cu ajutorul videoului [1] am înțeles mai bine cum funcționează un request GET/POST. Totodată, cu extensia *Postman*, am reușit să fac debugging mai ușor. La fiecare cerere de tip POST, îmi creăm o structura pentru job pe care îl adăugăm în coadă, creșteam counter de joburi și returnăm idul jobului proaspăt generat. Un exemplu de structura:
+```python
+job_struct = {
+        "job_id" : job_id ,
+        "nume_job" :  "state_mean" , 
+        "question_data" : data['question'],
+        "nume_stat" : data['state'],
+        "status" : "running"
+    }
+```
+4. Cu ajutorul aplicației *Postman*, am reușit să generez și unittests.
 
-***Obligatoriu:*** 
 
-
-* De făcut referință la abordarea generală menționată în paragraful de mai sus. Aici se pot băga bucăți de cod/funcții - etc.
-* Consideri că tema este utilă?
-* Consideri implementarea naivă, eficientă, se putea mai bine?
-
-***Opțional:***
-
-
-* De menționat cazuri speciale, nespecificate în enunț și cum au fost tratate.
+* Consider că tema este utilă. Am înțeles mai bine ce se întâmplă în spatele unei relații server-client. Am aprofundat atât limbajul Python, cât și getsionarea threadurilor.
+* Cred că implementarea este echilibrată, întrucât are o logică destul de ușor de urmărit.
 
 
 Implementare
 -
 
-* Am implementat toate functiile din enunt, desi ultimele 2: *state_mean_by_category* si *mean_by_category* necesita optimizare intrucat checkerul imi da timeout cu cea propusa. 
+* Am implementat toate funcțiile din checker, deși ultimele 2: *state_mean_by_category* și *mean_by_category* necesită optimizare întrucât checkerul îmi da timeout cu cea propusă. Încă nu am implementat 2 din cele de tip GET.
 
 
 
 Resurse utilizate
 -
 
-* Resurse utilizate - toate resursele publice de pe internet/cărți/code snippets, chiar dacă sunt laboratoare de ASC
+* https://ocw.cs.pub.ro/courses/asc/laboratoare/02
+* [Create A Python API in 12 Minutes](https://www.youtube.com/watch?v=zsYIw6RXjfM) [1]
+* https://www.geeksforgeeks.org/python-get-first-n-keyvalue-pairs-in-given-dictionary/
 
 Git
 -
 1. https://github.com/dianagorescu/tema1-ASC.git
 
-Ce să **NU**
--
-* Detalii de implementare despre fiecare funcție/fișier în parte
-* Fraze lungi care să ocolească subiectul în cauză
-* Răspunsuri și idei neargumentate
-* Comentarii (din cod) și *TODO*-uri
-
-Acest model de README a fost adaptat după [exemplul de README de la SO](https://github.com/systems-cs-pub-ro/so/blob/master/assignments/README.example.md).
