@@ -13,7 +13,7 @@ class ThreadPool:
 
         self.data_list = data_ingestor.data_list
 
-        # Transfer listele cu categorii pentru taskul best5/ worst5
+        # Transfer lists with questions for tasks best5/ worst5
         self.qmin = data_ingestor.questions_best_is_min
         self.qmax = data_ingestor.questions_best_is_max
 
@@ -47,7 +47,7 @@ class ThreadPool:
 class TaskRunner(Thread):
     def __init__(self, coada_joburi,data_list, done_jobs, qmin, qmax):
 
-        # initiatilizez structuri necesare
+        # Initialize necessary structures
 
         Thread.__init__(self)
         self.coada_joburi = coada_joburi
@@ -83,24 +83,24 @@ class TaskRunner(Thread):
                 result = self.mean_by_category(self.data_list, job['question_data'])
             
 
-            # Construiesc folderul results
-            # Scriu in fisierul cu jobul corespunzator in format json
+            # Create the 'results' folder.
+            # Write to the corresponding job file in JSON format.
 
             os.makedirs("results", exist_ok=True)
             file_path = f"results/job_{job['job_id']}.json"
             with open(file_path, "w") as f:
                 json.dump(result, f)
 
-            # Asigur ca s a terminat activitatea jobului
-            # si adaug id-ul acestuia in lista de joburi terminate
+            # Ensure that the job activity has finished
+            # and add its ID to the list of completed jobs
 
             job['status'] = "done"
             self.done_jobs.append(job['job_id'])
 
     def states_mean(self, data_list, quest):
         
-        # Am definit cu defaultdict pentru a simplifica adaugarea si 
-        # accesarea datelor
+        # Defined with defaultdict to simplify the addition and
+        # accessing of data.
 
         result = defaultdict(lambda: 0) 
         contor = defaultdict(lambda: 0) 
@@ -108,7 +108,7 @@ class TaskRunner(Thread):
         for di in data_list:
             quest_name = di.get("Question")
 
-            # Actualizez dictionarele doar daca intrebarea corespunde
+            # Update the dictionaries only if the question matches
             if quest == quest_name:
                 state_name = di.get("LocationDesc")
                 result[state_name] += float(di.get("Data_Value"))
@@ -117,7 +117,7 @@ class TaskRunner(Thread):
         for state_name, sum in result.items():
             result[state_name] = sum / contor[state_name]
         
-        # Sortez crecator dupa medie
+        # Sort by means
         return dict(sorted(result.items(), key=lambda item: item[1] ))
     
 
@@ -132,7 +132,7 @@ class TaskRunner(Thread):
             state_name = dict.get("LocationDesc")
             quest = dict.get("Question")
 
-            # Actualizez variabilele doar daca datele corespund
+            # Update the variables only if the data matches
             if state_name == quest_state_name and quest == quest_name:
                 suma += float(dict.get("Data_Value"))
                 contor += 1
@@ -145,31 +145,29 @@ class TaskRunner(Thread):
 
     def best5(self, data_list, quest):
 
-        # Folosesc functia facuta mai sus
         sorted_di = self.states_mean( data_list, quest)
         
-        # Decid tipul intrebarii best
+        # Determine the type of best of the question
         if quest in self.qmin:
 
-            # Pentru best = min, returnez primele 5
+            # For best = min, I return the first 5
             return dict(itertools.islice(sorted_di.items(), 5))
         else:
 
-            # Pentru best = max, returnez ultimele 5
+            # For best = max, I return the last 5
             return dict(itertools.islice(reversed(sorted_di.items()), 5))
 
     def worst5(self, data_list, quest):
 
-        # Folosesc functia facuta mai sus
         sorted_di = self.states_mean( data_list, quest)
 
         # Decid tipul intrebarii best
         if quest in self.qmax:
 
-            # Pentru best = max, returnez primele 5
+            # For best = max, I return the first 5
             return dict(itertools.islice(sorted_di.items(), 5))
         else:
-            # Pentru best = min, returnez ultimele 5
+            # For best = min, I return the last 5
             return dict(itertools.islice(reversed(sorted_di.items()), 5))
 
 
@@ -185,18 +183,18 @@ class TaskRunner(Thread):
 
         medie = suma / contor
 
-        # Construiesc rezultatul corespunzator
+        # Construct the corresponding format
         result = {"global_mean" : medie}
         return result
 
 
     def diff_from_mean(self, data_list, quest):
 
-        # Initializez variabile necesare
+        # Initialize necessary variables
         medie_globala = self.global_mean(data_list, quest)['global_mean']
         d1 = self.states_mean(data_list, quest)
 
-        # Iterez prin dictionar si scad media_stat din cea globala
+        # Iterate and subtract the average_stat from the global one
         for state_name, sum in d1.items():
             d1[state_name] = medie_globala - sum
 

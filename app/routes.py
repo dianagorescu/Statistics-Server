@@ -1,7 +1,6 @@
 from app import webserver
 from flask import request, jsonify
 
-import os
 import json
 
 @webserver.route('/api/post_endpoint', methods=['POST'])
@@ -41,13 +40,6 @@ def get_response(job_id):
     # Job valid, dar inca ruleaza
     return jsonify({'status': 'running'}), 200
 
-
-@webserver.route('/api/graceful_shutdown', methods=['GET'])
-def graceful_shutdown_response(job_id):
-    print(f"JobID is {job_id}")
-    
-    return jsonify({'status': 'done'}),  200
-
 @webserver.route('/api/states_mean', methods=['POST'])
 def states_mean_request():
     data = request.json
@@ -81,7 +73,6 @@ def state_mean_request():
     }
 
     webserver.tasks_runner.coada_joburi.put(job_struct)
-
     return jsonify({"job_id": str(job_id) }), 200
 
 
@@ -127,7 +118,6 @@ def global_mean_request():
     job_id = webserver.job_counter
     webserver.job_counter += 1
 
-    # TODO
     job_struct = {
         "job_id" : job_id ,
         "nume_job" :  "global_mean" , 
@@ -172,7 +162,6 @@ def state_diff_from_mean_request():
     }
 
     webserver.tasks_runner.coada_joburi.put(job_struct)
-
     return jsonify({"job_id": str(job_id) }), 200
 
 @webserver.route('/api/mean_by_category', methods=['POST'])
@@ -208,8 +197,14 @@ def state_mean_by_category_request():
     }
 
     webserver.tasks_runner.coada_joburi.put(job_struct)
-
     return jsonify({"job_id": str(job_id) }), 200
+
+@webserver.route('/api/graceful_shutdown/<int:job_id>', methods=['GET'])
+def graceful_shutdown_response(job_id):
+    print(f"JobID is {job_id}")
+    
+    return jsonify({"job_id": str(job_id) }), 200
+
 
 # You can check localhost in your browser to see what this displays
 @webserver.route('/')

@@ -1,15 +1,15 @@
-import os
-import json
 import csv
 
 class DataIngestor:
     def __init__(self, csv_path: str):
 
+        # Initialize the list
         self.data_list= []
 
         with open(csv_path, newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             
+            # Create a dictionary for every row
             for row in reader:
                 data_dict = {}
                 for column, value in row.items():
