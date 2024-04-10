@@ -4,12 +4,11 @@ import csv
 
 class DataIngestor:
     def __init__(self, csv_path: str):
-        # TODO: Read csv from csv_path
+
         self.data_list= []
 
         with open(csv_path, newline='') as csvfile:
             reader = csv.DictReader(csvfile)
-            #columns = reader.fieldnames
             
             for row in reader:
                 data_dict = {}
@@ -17,9 +16,6 @@ class DataIngestor:
                     data_dict[column] = value
                 self.data_list.append(data_dict)
 
-        #print(data[0]['Income'])
-        
-        #print(data[0]['YearStart'])
 
         self.questions_best_is_min = [
             'Percent of adults aged 18 years and older who have an overweight classification',

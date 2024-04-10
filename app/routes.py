@@ -4,7 +4,6 @@ from flask import request, jsonify
 import os
 import json
 
-# Example endpoint definition
 @webserver.route('/api/post_endpoint', methods=['POST'])
 def post_endpoint():
     if request.method == 'POST':
@@ -24,22 +23,22 @@ def post_endpoint():
 
 @webserver.route('/api/get_results/<job_id>', methods=['GET'])
 def get_response(job_id):
-    print(f"JobID is {job_id}")
-    # TODO
-    # Check if job_id is valid
+    
+    # Job invalid
     if int(job_id) > webserver.job_counter:
         return jsonify({'status': 'error'}), 400
     
+    # Job valid si terminat
     if int(job_id) in webserver.tasks_runner.done_jobs:
         
-        #print("Intra pe elif")
-        file_path = f"results/job_{job_id}.json"  # Assuming JSON file extension is ".json"
+        # Extrag rezultatul din fisier si il trimit
+        file_path = f"results/job_{job_id}.json"
         with open(file_path, "r") as f:
             result = json.load(f)
-        #trebuie sa iau resultatul din fisier
+        
         return jsonify({'status': 'done', 'data': result}), 200
 
-    # If not, return running status
+    # Job valid, dar inca ruleaza
     return jsonify({'status': 'running'}), 200
 
 
@@ -52,12 +51,10 @@ def graceful_shutdown_response(job_id):
 @webserver.route('/api/states_mean', methods=['POST'])
 def states_mean_request():
     data = request.json
-    print(f"Got request {data}")
 
     job_id = webserver.job_counter
     webserver.job_counter += 1
 
-    # TODO
     job_struct = {
         "job_id" : job_id ,
         "nume_job" :  "states_mean" , 
@@ -71,7 +68,6 @@ def states_mean_request():
 @webserver.route('/api/state_mean', methods=['POST'])
 def state_mean_request():
     data = request.json
-    print(f"Got request {data}")
 
     job_id = webserver.job_counter
     webserver.job_counter += 1
@@ -92,12 +88,10 @@ def state_mean_request():
 @webserver.route('/api/best5', methods=['POST'])
 def best5_request():
     data = request.json
-    print(f"Got request {data}")
 
     job_id = webserver.job_counter
     webserver.job_counter += 1
 
-    # TODO
     job_struct = {
         "job_id" : job_id ,
         "nume_job" :  "best5" , 
@@ -116,7 +110,6 @@ def worst5_request():
     job_id = webserver.job_counter
     webserver.job_counter += 1
 
-    # TODO
     job_struct = {
         "job_id" : job_id ,
         "nume_job" :  "worst5" , 
@@ -130,7 +123,6 @@ def worst5_request():
 @webserver.route('/api/global_mean', methods=['POST'])
 def global_mean_request():
     data = request.json
-    print(f"Got request {data}")
 
     job_id = webserver.job_counter
     webserver.job_counter += 1
@@ -149,7 +141,6 @@ def global_mean_request():
 @webserver.route('/api/diff_from_mean', methods=['POST'])
 def diff_from_mean_request():
     data = request.json
-    print(f"Got request {data}")
 
     job_id = webserver.job_counter
     webserver.job_counter += 1
@@ -168,7 +159,6 @@ def diff_from_mean_request():
 @webserver.route('/api/state_diff_from_mean', methods=['POST'])
 def state_diff_from_mean_request():
     data = request.json
-    print(f"Got request {data}")
 
     job_id = webserver.job_counter
     webserver.job_counter += 1
@@ -188,12 +178,10 @@ def state_diff_from_mean_request():
 @webserver.route('/api/mean_by_category', methods=['POST'])
 def mean_by_category_request():
     data = request.json
-    print(f"Got request {data}")
 
     job_id = webserver.job_counter
     webserver.job_counter += 1
 
-    # TODO
     job_struct = {
         "job_id" : job_id ,
         "nume_job" :  "mean_by_category" , 
@@ -207,7 +195,6 @@ def mean_by_category_request():
 @webserver.route('/api/state_mean_by_category', methods=['POST'])
 def state_mean_by_category_request():
     data = request.json
-    print(f"Got request {data}")
 
     job_id = webserver.job_counter
     webserver.job_counter += 1
