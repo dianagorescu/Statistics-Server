@@ -3,6 +3,7 @@ from threading import Thread, Event
 from collections import defaultdict
 
 import time
+import itertools 
 import json
 import os
 import multiprocessing
@@ -19,6 +20,9 @@ class ThreadPool:
         #   * recreate threads for each task
 
         self.data_list = data_ingestor.data_list
+        self.qmin = data_ingestor.questions_best_is_min
+        self.qmax = data_ingestor.questions_best_is_max
+
 
         n_threads = os.getenv('TP_NUM_OF_THREADS')
         
@@ -34,7 +38,7 @@ class ThreadPool:
         self.done_jobs = []
 
         for i in range (self.n_threads):
-            thread = TaskRunner(self.coada_joburi, self.data_list, self.done_jobs)
+            thread = TaskRunner(self.coada_joburi, self.data_list, self.done_jobs, self.qmin, self.qmax)
             thread.start()
             self.threads.append(thread)
 
@@ -48,13 +52,16 @@ class ThreadPool:
 
 
 class TaskRunner(Thread):
-    def __init__(self, coada_joburi,data_list, done_jobs):
+    def __init__(self, coada_joburi,data_list, done_jobs, qmin, qmax):
         # init necessary data structures
 
         Thread.__init__(self)
         self.coada_joburi = coada_joburi
         self.data_list = data_list
         self.done_jobs = done_jobs
+
+        self.qmin = qmin
+        self.qmax = qmax
         
         # self.event()
 
@@ -142,11 +149,19 @@ class TaskRunner(Thread):
 
     def best5(self, data_list, quest):
         sorted_di = self.states_mean( data_list, quest)
-        return dict(list(sorted_di.items())[0: 5])
+        
+        if quest in self.qmin:
+            return dict(itertools.islice(sorted_di.items(), 5))
+        else:
+            return dict(itertools.islice(reversed(sorted_di.items()), 5))
 
     def worst5(self, data_list, quest):
         sorted_di = self.states_mean( data_list, quest)
-        return dict(reversed(list(sorted_di.items())[-5:]))
+        if quest in self.qmax:
+            return dict(itertools.islice(sorted_di.items(), 5))
+        else:
+            return dict(itertools.islice(reversed(sorted_di.items()), 5))
+
 
     def global_mean(self, data_list, quest):
         suma = 0
