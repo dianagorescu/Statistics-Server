@@ -1,9 +1,8 @@
 from queue import Queue
-from threading import Thread, Event
+from threading import Thread
 from collections import defaultdict
 
-import time
-import itertools 
+import itertools
 import json
 import os
 import multiprocessing
@@ -19,24 +18,25 @@ class ThreadPool:
 
 
         n_threads = os.getenv('TP_NUM_OF_THREADS')
-        
         if n_threads:
             self.n_threads = n_threads
         else:
             self.n_threads = multiprocessing.cpu_count()
-        
 
         self.coada_joburi = Queue()
         self.threads = []
         self.done_jobs = []
 
-        for i in range (self.n_threads):
-            thread = TaskRunner(self.coada_joburi, self.data_list, self.done_jobs, self.qmin, self.qmax)
+        for _ in range (self.n_threads):
+            thread = TaskRunner(self.coada_joburi,
+                                self.data_list,
+                                self.done_jobs,
+                                self.qmin,
+                                self.qmax)
             thread.start()
             self.threads.append(thread)
 
     def graceful_shutdown(self):
-        
         for _ in range(self.n_threads):
             self.coada_joburi.put(None)
 
@@ -59,7 +59,7 @@ class TaskRunner(Thread):
 
     def run(self):
         while True:
-            
+
             result = {}
             job = self.coada_joburi.get()
 
@@ -81,14 +81,13 @@ class TaskRunner(Thread):
                 result = self.state_mean_by_category(self.data_list, job)
             elif job['nume_job'] == "mean_by_category":
                 result = self.mean_by_category(self.data_list, job['question_data'])
-            
 
             # Create the 'results' folder.
             # Write to the corresponding job file in JSON format.
 
             os.makedirs("results", exist_ok=True)
             file_path = f"results/job_{job['job_id']}.json"
-            with open(file_path, "w") as f:
+            with open(file_path, "w", encoding='utf-8') as f:
                 json.dump(result, f)
 
             # Ensure that the job activity has finished
@@ -98,12 +97,11 @@ class TaskRunner(Thread):
             self.done_jobs.append(job['job_id'])
 
     def states_mean(self, data_list, quest):
-        
+
         # Defined with defaultdict to simplify the addition and
         # accessing of data.
-
-        result = defaultdict(lambda: 0) 
-        contor = defaultdict(lambda: 0) 
+        result = defaultdict(lambda: 0)
+        contor = defaultdict(lambda: 0)
 
         for di in data_list:
             quest_name = di.get("Question")
@@ -114,12 +112,12 @@ class TaskRunner(Thread):
                 result[state_name] += float(di.get("Data_Value"))
                 contor[state_name] += 1
 
-        for state_name, sum in result.items():
-            result[state_name] = sum / contor[state_name]
-        
+        for state_name, suma in result.items():
+            result[state_name] = suma / contor[state_name]
+
         # Sort by means
         return dict(sorted(result.items(), key=lambda item: item[1] ))
-    
+
 
     def state_mean(self, data_list, data_quest):
         suma = 0
@@ -127,14 +125,14 @@ class TaskRunner(Thread):
         quest_state_name = data_quest['nume_stat']
         quest_name = data_quest['question_data']
 
-        for dict in data_list:
+        for di in data_list:
 
-            state_name = dict.get("LocationDesc")
-            quest = dict.get("Question")
+            state_name = di.get("LocationDesc")
+            quest = di.get("Question")
 
             # Update the variables only if the data matches
             if state_name == quest_state_name and quest == quest_name:
-                suma += float(dict.get("Data_Value"))
+                suma += float(di.get("Data_Value"))
                 contor += 1
 
         medie = suma / contor
@@ -146,16 +144,14 @@ class TaskRunner(Thread):
     def best5(self, data_list, quest):
 
         sorted_di = self.states_mean( data_list, quest)
-        
+
         # Determine the type of best of the question
         if quest in self.qmin:
-
             # For best = min, I return the first 5
             return dict(itertools.islice(sorted_di.items(), 5))
-        else:
 
-            # For best = max, I return the last 5
-            return dict(itertools.islice(reversed(sorted_di.items()), 5))
+        # For best = max, I return the last 5
+        return dict(itertools.islice(reversed(sorted_di.items()), 5))
 
     def worst5(self, data_list, quest):
 
@@ -163,12 +159,11 @@ class TaskRunner(Thread):
 
         # Decid tipul intrebarii best
         if quest in self.qmax:
-
             # For best = max, I return the first 5
             return dict(itertools.islice(sorted_di.items(), 5))
-        else:
-            # For best = min, I return the last 5
-            return dict(itertools.islice(reversed(sorted_di.items()), 5))
+
+        # For best = min, I return the last 5
+        return dict(itertools.islice(reversed(sorted_di.items()), 5))
 
 
     def global_mean(self, data_list, quest):
@@ -195,8 +190,8 @@ class TaskRunner(Thread):
         d1 = self.states_mean(data_list, quest)
 
         # Iterate and subtract the average_stat from the global one
-        for state_name, sum in d1.items():
-            d1[state_name] = medie_globala - sum
+        for state_name, suma in d1.items():
+            d1[state_name] = medie_globala - suma
 
         return d1
 
@@ -212,66 +207,9 @@ class TaskRunner(Thread):
         return result
 
     def state_mean_by_category(self, data_list, data_quest):
-
-        # quest_state_name = data_quest['nume_stat']
-        # quest_name = data_quest['question_data']
-
-        # mean = defaultdict(lambda: 0)
-        # contor = defaultdict(lambda: 0)
-
-        # for dict in data_list:
-        #     state_name = dict.get("LocationDesc")
-        #     quest = dict.get("Question")
-
-        #     # Construiesc media pe acelasi principiu, schimband doar 
-        #     # coloana de interes
-        #     if state_name == quest_state_name and quest == quest_name:
-        #         mean[(dict.get("StratificationCategory1"), dict.get("Stratification1"))] += float(dict.get("Data_Value"))
-        #         contor[(dict.get("StratificationCategory1"), dict.get("Stratification1"))] += 1
-                
-        
-        # for k, m in mean.items():
-        #     mean[k] = m / contor[k]
-
-        # lis = sorted(mean.items())
-        # d = {}
-        # for k, m in lis:
-        #     d[k] = m
-        
-        # # Construiesc rezultatul corespunzator
-        # result = {quest_state_name: d}
         return {}
-    
+
     def mean_by_category(self, data_list, quest):
 
         result = {}
-        # list_states = []
-        # for dict in data_list:
-        #     quest_name = dict.get("Question")
-        #     state_name = dict.get("LocationDesc")
-
-        #     # Construiesc o lista cu numele statelor de interes si o sortez
-        #     if quest == quest_name and state_name not in list_states:
-        #         list_states.append(state_name)
-        # list_states = sorted(list_states)
-
-        # for s in list_states:
-
-        #     # Construiesc un input corespunzator pentru a apela 
-        #     # functia pe un singur stat
-        #     data_quest = {"question_data":quest,
-        #               "nume_stat":s}
-        #     res = self.state_mean_by_category(data_list, data_quest)[s]
-            
-        #     # Inserez numele statului pentru a respecta formatul outputului
-        #     for i, mean_value in res.items():
-        #         l = list(i)
-        #         l.insert(0, s)
-        #         result[tuple(l)] = mean_value    
-
         return result
-
-         
-
-
-        

@@ -1,8 +1,10 @@
+"""This module contains the initialization code for the app package."""
+import os
 from flask import Flask
+
 from app.data_ingestor import DataIngestor
 from app.task_runner import ThreadPool
 
-import os
 
 webserver = Flask(__name__)
 

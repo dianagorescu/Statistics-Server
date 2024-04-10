@@ -1,14 +1,14 @@
-from app import webserver
-from flask import request, jsonify
-
+"""This module defines the routes for the application."""
 import json
+from flask import request, jsonify
+from app import webserver
+
 
 @webserver.route('/api/post_endpoint', methods=['POST'])
 def post_endpoint():
     if request.method == 'POST':
         # Assuming the request contains JSON data
         data = request.json
-        print(f"got data in post {data}")
 
         # Process the received data
         # For demonstration purposes, just echoing back the received data
@@ -16,25 +16,25 @@ def post_endpoint():
 
         # Sending back a JSON response
         return jsonify(response)
-    else:
-        # Method Not Allowed
-        return jsonify({"error": "Method not allowed"}), 405
+    
+    # Method Not Allowed
+    return jsonify({"error": "Method not allowed"}), 405
 
 @webserver.route('/api/get_results/<job_id>', methods=['GET'])
 def get_response(job_id):
-    
+
     # Job invalid
     if int(job_id) > webserver.job_counter:
         return jsonify({'status': 'error'}), 400
-    
+
     # Job valid si terminat
     if int(job_id) in webserver.tasks_runner.done_jobs:
-        
+
         # Extrag rezultatul din fisier si il trimit
         file_path = f"results/job_{job_id}.json"
-        with open(file_path, "r") as f:
+        with open(file_path, "r", encoding='utf-8') as f:
             result = json.load(f)
-        
+
         return jsonify({'status': 'done', 'data': result}), 200
 
     # Job valid, dar inca ruleaza
@@ -96,7 +96,6 @@ def best5_request():
 @webserver.route('/api/worst5', methods=['POST'])
 def worst5_request():
     data = request.json
-    print(f"Got request {data}")
 
     job_id = webserver.job_counter
     webserver.job_counter += 1
@@ -135,7 +134,6 @@ def diff_from_mean_request():
     job_id = webserver.job_counter
     webserver.job_counter += 1
 
-    # TODO
     job_struct = {
         "job_id" : job_id ,
         "nume_job" :  "diff_from_mean" , 
@@ -202,7 +200,7 @@ def state_mean_by_category_request():
 @webserver.route('/api/graceful_shutdown/<int:job_id>', methods=['GET'])
 def graceful_shutdown_response(job_id):
     print(f"JobID is {job_id}")
-    
+
     return jsonify({"job_id": str(job_id) }), 200
 
 
