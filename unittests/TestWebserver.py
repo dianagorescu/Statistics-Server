@@ -55,6 +55,41 @@ class TestAPI(unittest.TestCase):
         # Check if the function returns the correct result
         expected_result = {"Guam": 30.7} 
         self.assertEqual(result, expected_result)
+    
+    def test_global_mean(self):
+        coada_joburi = []
+        data_list = [
+            {"LocationDesc": "Guam", "Question": "What is the average temperature?", "Data_Value": "10.5"},
+            {"LocationDesc": "Maryland", "Question": "What is the GDP?", "Data_Value": "20.3"},
+            {"LocationDesc": "Guam", "Question": "What is the average income?", "Data_Value": "30.7"},
+            {"LocationDesc": "Texas", "Question": "What is the state mean?", "Data_Value": "15.2"},
+            {"LocationDesc": "New York", "Question": "What is the GDP?", "Data_Value": "25.6"},
+            {"LocationDesc": "Arizona", "Question": "What is the education level?", "Data_Value": "22.9"},
+            {"LocationDesc": "Maryland", "Question": "What is the average income?", "Data_Value": "21.3"},
+            {"LocationDesc": "Guam", "Question": "What is the average income?", "Data_Value": "30.1"},
+            {"LocationDesc": "Texas", "Question": "What is the GDP?", "Data_Value": "15.8"},
+            {"LocationDesc": "New York", "Question": "What is the GDP?", "Data_Value": "25.6"},
+            {"LocationDesc": "Maryland", "Question": "What is the average income?", "Data_Value": "24.3"},
+            {"LocationDesc": "Guam", "Question": "What is the GDP?", "Data_Value": "37.7"},
+            {"LocationDesc": "Texas", "Question": "What is the state mean?", "Data_Value": "75.2"},
+            {"LocationDesc": "New York", "Question": "What is the state mean?", "Data_Value": "45.6"}
+        ]
+        done_jobs = {}
+        qmin = []
+        qmax = []
+
+        # Initialize an instance of the TaskRunner class
+        task_runner = TaskRunner(coada_joburi, data_list, done_jobs, qmin, qmax)
+
+        # Define input data for the function
+        data_quest = {"question": "What is the GDP?"}
+
+        # Call the state_mean function with the simulated data
+        result = task_runner.global_mean(data_list, data_quest['question'])
+
+        # Check if the function returns the correct result
+        expected_result = {"global_mean": 25.000000000000004} 
+        self.assertEqual(result, expected_result)
 
 if __name__ == '__main__':
     unittest.main()

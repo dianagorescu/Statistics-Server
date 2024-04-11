@@ -7,6 +7,27 @@ import json
 import os
 import multiprocessing
 
+import logging
+from logging.handlers import RotatingFileHandler
+
+# Configurați logging-ul
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        RotatingFileHandler('webserver.log', maxBytes=1024*1024, backupCount=5)
+    ]
+)
+
+# Create a logger
+logger = logging.getLogger('webserver')
+
+# Exemple of INFO level logging
+logger.info('INFO:')
+
+# Exemple of ERROR level logging
+logger.error('ERROR: ')
+
 class ThreadPool:
     def __init__(self, data_ingestor):
 
