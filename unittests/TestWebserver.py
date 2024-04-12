@@ -316,6 +316,117 @@ class TestAPI(unittest.TestCase):
         expected_result = {'Bucharest': 75.87, 'Maryland': 61.8, 'Texas': 46.7, 'Guam': 30.1, 'New York': 17.933333333333334}
         self.assertEqual(result, expected_result)
 
+    def test_state_mean_by_category(self):
+        coada_joburi = []
+        data_list = [
+            {"LocationDesc": "Guam", "Question": "What is the average temperature?", "Data_Value": "10.5", "StratificationCategory1": "Age (years)", "Stratification1":"25 - 34"},
+            {"LocationDesc": "Texas", "Question": "What is the GDP?", "Data_Value": "20.3", "StratificationCategory1": "Gender", "Stratification1":"Male"},
+            {"LocationDesc": "Guam", "Question": "What is the GDP?", "Data_Value": "30.7", "StratificationCategory1": "Age (years)", "Stratification1":"35 - 44"},
+            {"LocationDesc": "Bucharest", "Question": "What is the average income?", "Data_Value": "30.7", "StratificationCategory1": "Gender", "Stratification1":"Female"},
+            {"LocationDesc": "Texas", "Question": "What is the GDP?", "Data_Value": "15.2", "StratificationCategory1": "Age (years)", "Stratification1":"25 - 34"},
+            {"LocationDesc": "New York", "Question": "What is the GDP?", "Data_Value": "25.6", "StratificationCategory1": "Age (years)", "Stratification1":"25 - 34"},
+            {"LocationDesc": "Arizona", "Question": "What is the average income?", "Data_Value": "24.9", "StratificationCategory1": "Age (years)", "Stratification1":""},
+            {"LocationDesc": "Arizona", "Question": "What is the state mean?", "Data_Value": "30.9", "StratificationCategory1": "Gender", "Stratification1":"Male"},
+            {"LocationDesc": "Texas", "Question": "What is the GDP?", "Data_Value": "21.27", "StratificationCategory1": "Gender", "Stratification1":"Male"},
+            {"LocationDesc": "Texas", "Question": "What is the GDP?", "Data_Value": "25.9", "StratificationCategory1": "Age (years)", "Stratification1":"35 - 44"},
+            {"LocationDesc": "Arizona", "Question": "What is the education level?", "Data_Value": "22.9", "StratificationCategory1": "Gender", "Stratification1":"Female"},
+            {"LocationDesc": "Maryland", "Question": "What is the average income?", "Data_Value": "21.3", "StratificationCategory1": "Gender", "Stratification1":"Female"},
+            {"LocationDesc": "Guam", "Question": "What is the average income?", "Data_Value": "30.1", "StratificationCategory1": "Gender", "Stratification1":"Female"},
+            {"LocationDesc": "Arizona", "Question": "What is the percentage of the population that owns a home?", "Data_Value": "10.5", "StratificationCategory1": "Age (years)", "Stratification1":"25 - 34"},
+            {"LocationDesc": "Arizona", "Question": "What is the average temperature?", "Data_Value": "25.9", "StratificationCategory1": "Age (years)", "Stratification1":"25 - 34"},
+            {"LocationDesc": "Texas", "Question": "What is the GDP?", "Data_Value": "15.8", "StratificationCategory1": "Age (years)", "Stratification1":"25 - 34"},
+            {"LocationDesc": "New York", "Question": "What is the average income?", "Data_Value": "25.6", "StratificationCategory1": "Age (years)", "Stratification1":"35 - 44"},
+            {"LocationDesc": "Maryland", "Question": "What is the average income?", "Data_Value": "24.3", "StratificationCategory1": "Age (years)", "Stratification1":"25 - 34"},
+            {"LocationDesc": "Guam", "Question": "What is the GDP?", "Data_Value": "37.7", "StratificationCategory1": "Education", "Stratification1":"Highschool"},
+            {"LocationDesc": "Texas", "Question": "What is the state mean?", "Data_Value": "75.2", "StratificationCategory1": "Education", "Stratification1":"Highschool"},
+            {"LocationDesc": "Texas", "Question": "How many individuals are currently unemployed?", "Data_Value": "75.8", "StratificationCategory1": "Age (years)", "Stratification1":"25 - 34"},
+            {"LocationDesc": "Texas", "Question": "What is the average income?", "Data_Value": "78.2", "StratificationCategory1": "Age (years)", "Stratification1":"25 - 34"},
+            {"LocationDesc": "Texas", "Question": "What is the state mean?", "Data_Value": "77.88", "StratificationCategory1": "Education", "Stratification1":"Highschool"},
+            {"LocationDesc": "Texas", "Question": "What is the average income?", "Data_Value": "50.2", "StratificationCategory1": "Education", "Stratification1":"College"},
+            {"LocationDesc": "New York", "Question": "What is the state mean?", "Data_Value": "45.6", "StratificationCategory1": "Education", "Stratification1":"College"},
+            {"LocationDesc": "Arizona", "Question": "What is the percentage of the population that owns a home?", "Data_Value": "45.9", "StratificationCategory1": "Education", "Stratification1":"College"}
+        ]
+        done_jobs = {}  
+        qmin = [
+            'How many individuals are currently unemployed?',
+            'What is the GDP?',
+            'What is the average income?'
+        ]
+        qmax = [
+            'How many individuals are below the poverty line?',
+            'What is the percentage of the population that owns a home?',
+            'What is the state mean?'
+        ]
+
+        # Initialize an instance of the TaskRunner class
+        task_runner = TaskRunner(coada_joburi, data_list, done_jobs, qmin, qmax)
+
+        # Define input data for the function
+        data_quest = {"question_data": "What is the GDP?", "nume_stat": "Texas"}
+
+        # Call the state_mean function with the simulated data
+        result = task_runner.state_mean_by_category(data_list, data_quest)
+
+        # Check if the function returns the correct result
+        expected_result = {'Texas': {"('Age (years)', '25 - 34')": 15.5, "('Age (years)', '35 - 44')": 25.9, "('Gender', 'Male')": 20.785}}
+        self.assertEqual(result, expected_result)
+
+
+    def test_mean_by_category(self):
+        coada_joburi = []
+        data_list = [
+            {"LocationDesc": "Guam", "Question": "What is the average temperature?", "Data_Value": "10.5", "StratificationCategory1": "Age (years)", "Stratification1":"25 - 34"},
+            {"LocationDesc": "Texas", "Question": "What is the GDP?", "Data_Value": "20.3", "StratificationCategory1": "Gender", "Stratification1":"Male"},
+            {"LocationDesc": "Guam", "Question": "What is the GDP?", "Data_Value": "30.7", "StratificationCategory1": "Age (years)", "Stratification1":"35 - 44"},
+            {"LocationDesc": "Bucharest", "Question": "What is the average income?", "Data_Value": "30.7", "StratificationCategory1": "Gender", "Stratification1":"Female"},
+            {"LocationDesc": "Texas", "Question": "What is the GDP?", "Data_Value": "15.2", "StratificationCategory1": "Age (years)", "Stratification1":"25 - 34"},
+            {"LocationDesc": "New York", "Question": "What is the GDP?", "Data_Value": "25.6", "StratificationCategory1": "Age (years)", "Stratification1":"25 - 34"},
+            {"LocationDesc": "Arizona", "Question": "What is the average income?", "Data_Value": "24.9", "StratificationCategory1": "Age (years)", "Stratification1":""},
+            {"LocationDesc": "Arizona", "Question": "What is the state mean?", "Data_Value": "30.9", "StratificationCategory1": "Gender", "Stratification1":"Male"},
+            {"LocationDesc": "Texas", "Question": "What is the GDP?", "Data_Value": "21.27", "StratificationCategory1": "Gender", "Stratification1":"Male"},
+            {"LocationDesc": "Texas", "Question": "What is the GDP?", "Data_Value": "25.9", "StratificationCategory1": "Age (years)", "Stratification1":"35 - 44"},
+            {"LocationDesc": "Arizona", "Question": "What is the education level?", "Data_Value": "22.9", "StratificationCategory1": "Gender", "Stratification1":"Female"},
+            {"LocationDesc": "Maryland", "Question": "What is the average income?", "Data_Value": "21.3", "StratificationCategory1": "Gender", "Stratification1":"Female"},
+            {"LocationDesc": "Guam", "Question": "What is the average income?", "Data_Value": "30.1", "StratificationCategory1": "Gender", "Stratification1":"Female"},
+            {"LocationDesc": "Arizona", "Question": "What is the percentage of the population that owns a home?", "Data_Value": "10.5", "StratificationCategory1": "Age (years)", "Stratification1":"25 - 34"},
+            {"LocationDesc": "Arizona", "Question": "What is the average temperature?", "Data_Value": "25.9", "StratificationCategory1": "Age (years)", "Stratification1":"25 - 34"},
+            {"LocationDesc": "Texas", "Question": "What is the GDP?", "Data_Value": "15.8", "StratificationCategory1": "Age (years)", "Stratification1":"25 - 34"},
+            {"LocationDesc": "New York", "Question": "What is the average income?", "Data_Value": "25.6", "StratificationCategory1": "Age (years)", "Stratification1":"35 - 44"},
+            {"LocationDesc": "Maryland", "Question": "What is the average income?", "Data_Value": "24.3", "StratificationCategory1": "Age (years)", "Stratification1":"25 - 34"},
+            {"LocationDesc": "Guam", "Question": "What is the GDP?", "Data_Value": "37.7", "StratificationCategory1": "Education", "Stratification1":"Highschool"},
+            {"LocationDesc": "Texas", "Question": "What is the state mean?", "Data_Value": "75.2", "StratificationCategory1": "Education", "Stratification1":"Highschool"},
+            {"LocationDesc": "Texas", "Question": "How many individuals are currently unemployed?", "Data_Value": "75.8", "StratificationCategory1": "Age (years)", "Stratification1":"25 - 34"},
+            {"LocationDesc": "Texas", "Question": "What is the average income?", "Data_Value": "78.2", "StratificationCategory1": "Age (years)", "Stratification1":"25 - 34"},
+            {"LocationDesc": "Texas", "Question": "What is the state mean?", "Data_Value": "77.88", "StratificationCategory1": "Education", "Stratification1":"Highschool"},
+            {"LocationDesc": "Texas", "Question": "What is the average income?", "Data_Value": "50.2", "StratificationCategory1": "Education", "Stratification1":"College"},
+            {"LocationDesc": "New York", "Question": "What is the state mean?", "Data_Value": "45.6", "StratificationCategory1": "Education", "Stratification1":"College"},
+            {"LocationDesc": "Arizona", "Question": "What is the percentage of the population that owns a home?", "Data_Value": "45.9", "StratificationCategory1": "Education", "Stratification1":"College"}
+        ]
+        done_jobs = {}  
+        qmin = [
+            'How many individuals are currently unemployed?',
+            'What is the GDP?',
+            'What is the average income?'
+        ]
+        qmax = [
+            'How many individuals are below the poverty line?',
+            'What is the percentage of the population that owns a home?',
+            'What is the state mean?'
+        ]
+
+        # Initialize an instance of the TaskRunner class
+        task_runner = TaskRunner(coada_joburi, data_list, done_jobs, qmin, qmax)
+
+        # Define input data for the function
+        data_quest = {"question": "What is the GDP?"}
+
+        # Call the state_mean function with the simulated data
+        result = task_runner.mean_by_category(data_list, data_quest['question'])
+
+        # Check if the function returns the correct result
+        expected_result = {"('Guam', 'Age (years)', '35 - 44')": 30.7, "('Guam', 'Education', 'Highschool')": 37.7, "('New York', 'Age (years)', '25 - 34')": 25.6, "('Texas', 'Age (years)', '25 - 34')": 15.5, "('Texas', 'Age (years)', '35 - 44')": 25.9, "('Texas', 'Gender', 'Male')": 20.785} 
+        self.assertEqual(result, expected_result)
+
 if __name__ == '__main__':
     unittest.main()
     
