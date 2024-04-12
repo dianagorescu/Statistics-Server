@@ -233,7 +233,7 @@ def graceful_shutdown_response():
     """
     webserver.tasks_runner.graceful_shutdown()
 
-    return jsonify({"status": "done" }), 200
+    return jsonify({"status_server": "shutdown" }), 200
 
 
 @webserver.route('/api/jobs', methods=['GET'])
@@ -249,6 +249,16 @@ def jobs_response():
             result.append({"job_id_{job_id}" : "running"})
 
     return jsonify({"status": "done", "data": result}), 200
+
+
+@webserver.route('/api/num_jobs', methods=['GET'])
+def jobs_response():
+    """
+    This endpoint returns the number of jobs left
+    """
+    result = webserver.tasks_runner.coada_joburi.qsize() - len(webserver.tasks_runner.done_jobs)
+
+    return jsonify({result}), 200
 
 
 # You can check localhost in your browser to see what this displays
