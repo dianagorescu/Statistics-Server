@@ -252,7 +252,7 @@ def jobs_response():
 
 
 @webserver.route('/api/num_jobs', methods=['GET'])
-def jobs_response():
+def num_jobs_response():
     """
     This endpoint returns the number of jobs left
     """

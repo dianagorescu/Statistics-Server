@@ -196,12 +196,14 @@ class TaskRunner(Thread):
 
     def state_diff_from_mean(self, data_list, data_quest):
 
+        # Initialize necessary variables
         quest_name = data_quest['question_data']
         state_name = data_quest['nume_stat']
 
         medie_stat = self.state_mean(data_list, data_quest)[state_name]
         medie_globala = self.global_mean(data_list, quest_name)['global_mean']
 
+        # Calculate a simple difference
         result = {state_name : medie_globala - medie_stat}
         return result
 
