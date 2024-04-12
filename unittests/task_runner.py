@@ -98,7 +98,7 @@ class TaskRunner(Thread):
     def states_mean(self, data_list, quest):
 
         # Defined with defaultdict to simplify the addition and
-        # accessing of data.
+        # accessing of data
         result = defaultdict(lambda: 0)
         contor = defaultdict(lambda: 0)
 
