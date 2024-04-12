@@ -255,10 +255,11 @@ class TaskRunner(Thread):
             # formed by the name of the state, StratificationCategory1
             # and its segment, which will be the key for the mean dictionary
             if quest == quest_name:
-                if di.get("StratificationCategory1") != 'Nan':
+                # Verify if data was not reported
+                if di.get("Stratification1") != "" or di.get("StratificationCategory1") != "":
                     tu = (state_name, di.get("StratificationCategory1"), di.get("Stratification1"))
                     mean[str(tu)] += float(di.get("Data_Value"))
-                    contor[str(tu)] += 1
+                    contor[str(tu)] += 1    
 
         for k, m in mean.items():
             mean[k] = m / contor[k]
