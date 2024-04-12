@@ -208,9 +208,62 @@ class TaskRunner(Thread):
         return result
 
     def state_mean_by_category(self, data_list, data_quest):
-        return {}
+
+        # Initialize necessary variables
+        quest_state_name = data_quest['nume_stat']
+        quest_name = data_quest['question_data']
+
+        # Defined with defaultdict to simplify the addition and
+        # accessing of data
+        mean = defaultdict(lambda: 0)
+        contor = defaultdict(lambda: 0)
+
+        for di in data_list:
+            state_name = di.get("LocationDesc")
+            quest = di.get("Question")
+
+            # If the state name and the question match, made a tuple
+            # formed by the StratificationCategory1 and its segment
+            # which will be the key for the mean dictionary
+            if state_name == quest_state_name and quest == quest_name:
+                tu = (di.get("StratificationCategory1"), di.get("Stratification1"))
+                mean[str(tu)] += float(di.get("Data_Value"))
+                contor[str(tu)] += 1
+
+        for k, m in mean.items():
+            mean[k] = m / contor[k]
+
+        # Sorted by (StratificationCategory1, Stratification1)
+        res = dict(sorted(mean.items()))
+
+        # Construct the corresponding format
+        result = {quest_state_name: res}
+        return result
 
     def mean_by_category(self, data_list, quest):
 
-        result = {}
+        # Defined with defaultdict to simplify the addition and
+        # accessing of data
+        mean = defaultdict(lambda: 0)
+        contor = defaultdict(lambda: 0)
+
+        for di in data_list:
+            state_name = di.get("LocationDesc")
+            quest_name = di.get("Question")
+
+            # If the question matches, made a tuple
+            # formed by the name of the state, StratificationCategory1
+            # and its segment, which will be the key for the mean dictionary
+            if quest == quest_name:
+                if di.get("StratificationCategory1") != 'Nan':
+                    tu = (state_name, di.get("StratificationCategory1"), di.get("Stratification1"))
+                    mean[str(tu)] += float(di.get("Data_Value"))
+                    contor[str(tu)] += 1
+
+        for k, m in mean.items():
+            mean[k] = m / contor[k]
+
+        # Sorted by (State, StratificationCategory1, Stratification1)
+        result = dict(sorted(mean.items()))
+
         return result
