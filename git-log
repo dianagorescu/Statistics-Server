@@ -1,3 +1,45 @@
+commit b9a637a7c98e521e6277f7d308fe9c50ea43783d
+Author: diana <diana.gorescu@gmail.com>
+Date:   Fri Apr 12 20:27:22 2024 +0300
+
+    added 2 more unittests
+
+commit 5f2ad99a525a0d47665c913a18b8af186a1d62d1
+Author: diana <diana.gorescu@gmail.com>
+Date:   Fri Apr 12 18:37:18 2024 +0300
+
+    added last 2 endpoints
+
+commit 3c76beb47b5ed3dc59374d97fb43f4c8899f28e5
+Author: diana <diana.gorescu@gmail.com>
+Date:   Fri Apr 12 18:15:50 2024 +0300
+
+    added last 2 endpoints
+
+commit 5f0a2bc5575199105f9092d2b249f29b15152d32
+Author: diana <diana.gorescu@gmail.com>
+Date:   Fri Apr 12 00:07:02 2024 +0300
+
+    logging info
+
+commit 6573fac99ba463ac654c100c788d16563a4f73c1
+Author: diana <diana.gorescu@gmail.com>
+Date:   Thu Apr 11 14:42:53 2024 +0300
+
+    added 2 unittests
+
+commit 007272c38c42e83a42dfda90ffd71591982f4bd4
+Author: diana <diana.gorescu@gmail.com>
+Date:   Thu Apr 11 03:46:20 2024 +0300
+
+    added unittest demo
+
+commit fb82fb590b0748a5b25600a6a2ff705d6ef9ef8e
+Author: diana <diana.gorescu@gmail.com>
+Date:   Thu Apr 11 02:42:53 2024 +0300
+
+    fixed the checker
+
 commit 25471812fe9b8ee76d62cf469f452dc715fec5ac
 Author: diana <diana.gorescu@gmail.com>
 Date:   Wed Apr 10 22:51:32 2024 +0300
