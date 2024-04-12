@@ -1,3 +1,27 @@
+commit 7e98db4fe2fce84236c37c0893d074206abf8b93
+Author: diana <diana.gorescu@gmail.com>
+Date:   Fri Apr 12 23:15:20 2024 +0300
+
+    added full unittests
+
+commit b6a8526ab5a9e7fb3afb49584c61f22e94c6511e
+Author: diana <diana.gorescu@gmail.com>
+Date:   Fri Apr 12 22:46:58 2024 +0300
+
+    fixed last one
+
+commit 7ddc87b654ecb16271f8fdb908ca0a9fe94dfa84
+Author: diana <diana.gorescu@gmail.com>
+Date:   Fri Apr 12 22:13:37 2024 +0300
+
+    added category functions
+
+commit 0bbb065427264fcecd37bc7d365afb017018c0f0
+Author: diana <diana.gorescu@gmail.com>
+Date:   Fri Apr 12 20:52:55 2024 +0300
+
+    fixed routes
+
 commit d17885e286465ded1a68b579cd5a78bfc6291a8a
 Author: diana <diana.gorescu@gmail.com>
 Date:   Fri Apr 12 20:30:35 2024 +0300

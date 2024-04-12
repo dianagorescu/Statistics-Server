@@ -7,8 +7,8 @@ Organizare
 -
 1. În *data_ingestor.py* am citit setul de date în format *csv*. Am creat o lista de dicționare (1 dicționar reprezintă 1 rând citit). Uitându-mă în trecut, mi se pare o abordare naivă, întrucât aș fi putut accesa datele mai eficient.
 2. În ThreadPool îmi transfer datele citite și cele 2 liste de întrebări pentru taskul *best5* și *worst5*; setez numărul de threaduri; initializez o coadă Queue pentru sincronizarea joburilor, iar la final creez și lansez threadurile din lista. În plus, nefolosind ThreadPoolExecutor, a trebuit să mi definesc eu o funcție de shutdown în care dau join la threaduri.\
-În metodă *run()* din clasa TaskRunner apelez funcția cu numele jobului. Rezultatul acestuia este scris în format json într-un fișier. Așadar, jobul fiind terminat, îl adaug într-o lista specifică și actualizez și statusul acestuia. În aceeași clasa am implementat pe rând funcții pentru cererile enuntate.
-3. Cu ajutorul videoului [1] am înțeles mai bine cum funcționează un request GET/POST. Totodată, cu extensia *Postman*, am reușit să fac debugging mai ușor. La fiecare cerere de tip POST, îmi cream o structura pentru job pe care îl adăugăm în coadă, creșteam counter-ul de joburi și returnăm id-ul jobului proaspăt generat. Un exemplu de structura:
+În metoda *run()* din clasa TaskRunner apelez funcția numită după numele jobului. Rezultatul acesteia este scris în format json într-un fișier din folderul *results*. Așadar, jobul fiind terminat, îl adaug într-o lista specifică și actualizez și statusul acestuia. În aceeași clasa am implementat pe rând funcții pentru cererile enuntate.
+3. Cu ajutorul videoului [1] am înțeles mai bine cum funcționează un request GET/POST. Totodată, cu extensia *Postman*, am reușit să fac debugging mai ușor, vazand pe loc rezultatul al unei cereri. La fiecare cerere de tip POST, îmi cream o structura pentru job pe care îl adăugăm în coadă, creșteam counter-ul de joburi și returnam id-ul jobului proaspăt generat. Un exemplu de structura:
 ```python
 job_struct = {
         "job_id" : job_id ,
@@ -18,19 +18,19 @@ job_struct = {
         "status" : "running"
     }
 ```
-4.  Cu ajutorul documentației, am creat și unitteste pentru testarea funcționalității rutelor.
-5.  Folosind modulul de logging, în fișier de log *webserver.log*, am afișat toate intrările și ieșirile din rutele implementate.
+4.  Cu ajutorul documentației, am creat și unitteste pentru testarea funcționalității rutelor. Am dat exemple diverse pentru a evidenția corectitudinea lor.
+5.  Folosind modulul de logging, în fișier de log *webserver.log*, am afișat toate intrările și ieșirile din rutele implementate. Am folosit nivelul info() și *RotatingFileHandler* pentru a seta numărul maxim de copii istorice și dimensiunea lor.
 
 
 
-* Consider că tema este utilă. Am înțeles mai bine ce se întâmplă în spatele unei relații server-client. Am aprofundat atât limbajul Python, cât și getsionarea threadurilor.
+* Consider că tema este utilă. Am înțeles mai bine ce se întâmplă în spatele unei relații server-client. Am aprofundat atât limbajul Python, cât și gestionarea threadurilor. Fiind o tema destul de migăloasă, am învățat să fac debugging mai ușor, cu ajutorul fișierului de log.
 * Cred că implementarea este echilibrată, întrucât are o logică destul de ușor de urmărit.
 
 
 Implementare
 -
 
-* Am implementat mecanica serverului si toate requesturile enuntate deși ultimele 2: *state_mean_by_category* și *mean_by_category* necesită optimizare întrucât checkerul îmi da timeout cu cea propusă.
+* Am implementat mecanică serverului și toate requesturile enunțate. Totodată am făcut partea de Unittesting pentru toate rutele, Logging și încărcarea pe Gît.
 
 
 
