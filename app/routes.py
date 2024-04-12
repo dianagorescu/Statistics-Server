@@ -1,11 +1,28 @@
-"""This module defines the routes for the application."""
+"""This module contains routes for the application."""
 import json
+
+import logging
+from logging.handlers import RotatingFileHandler
+
 from flask import request, jsonify
 from app import webserver
+
+# Configure logging with UTC/GMT timestamp
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        RotatingFileHandler('webserver.log', maxBytes=1024*1024, backupCount=5)
+    ]
+)
+
+# Create a logger
+logger = logging.getLogger('webserver')
 
 
 @webserver.route('/api/post_endpoint', methods=['POST'])
 def post_endpoint():
+
     if request.method == 'POST':
         # Assuming the request contains JSON data
         data = request.json
@@ -23,26 +40,29 @@ def post_endpoint():
 @webserver.route('/api/get_results/<job_id>', methods=['GET'])
 def get_response(job_id):
 
-    # Job invalid
+    # Invalid job
     if int(job_id) > webserver.job_counter:
         return jsonify({'status': 'error'}), 400
 
-    # Job valid si terminat
+    # Valid and done job
     if int(job_id) in webserver.tasks_runner.done_jobs:
 
-        # Extrag rezultatul din fisier si il trimit
+        # Extract the result from the file and send it
         file_path = f"results/job_{job_id}.json"
         with open(file_path, "r", encoding='utf-8') as f:
             result = json.load(f)
 
+        logger.info('Job_id:%s exiting with result: %s', job_id, result)
+
         return jsonify({'status': 'done', 'data': result}), 200
 
-    # Job valid, dar inca ruleaza
+    # Valid job, but it is still running
     return jsonify({'status': 'running'}), 200
 
 @webserver.route('/api/states_mean', methods=['POST'])
 def states_mean_request():
     data = request.json
+    logger.info('Entering with parameters: %s', data)
 
     job_id = webserver.job_counter
     webserver.job_counter += 1
@@ -60,6 +80,7 @@ def states_mean_request():
 @webserver.route('/api/state_mean', methods=['POST'])
 def state_mean_request():
     data = request.json
+    logger.info('Entering with parameters: %s', data)
 
     job_id = webserver.job_counter
     webserver.job_counter += 1
@@ -79,6 +100,7 @@ def state_mean_request():
 @webserver.route('/api/best5', methods=['POST'])
 def best5_request():
     data = request.json
+    logger.info('Entering with parameters: %s', data)
 
     job_id = webserver.job_counter
     webserver.job_counter += 1
@@ -96,6 +118,7 @@ def best5_request():
 @webserver.route('/api/worst5', methods=['POST'])
 def worst5_request():
     data = request.json
+    logger.info('Entering with parameters: %s', data)
 
     job_id = webserver.job_counter
     webserver.job_counter += 1
@@ -113,6 +136,7 @@ def worst5_request():
 @webserver.route('/api/global_mean', methods=['POST'])
 def global_mean_request():
     data = request.json
+    logger.info('Entering with parameters: %s', data)
 
     job_id = webserver.job_counter
     webserver.job_counter += 1
@@ -130,6 +154,7 @@ def global_mean_request():
 @webserver.route('/api/diff_from_mean', methods=['POST'])
 def diff_from_mean_request():
     data = request.json
+    logger.info('Entering with parameters: %s', data)
 
     job_id = webserver.job_counter
     webserver.job_counter += 1
@@ -147,6 +172,7 @@ def diff_from_mean_request():
 @webserver.route('/api/state_diff_from_mean', methods=['POST'])
 def state_diff_from_mean_request():
     data = request.json
+    logger.info('Entering with parameters: %s', data)
 
     job_id = webserver.job_counter
     webserver.job_counter += 1
@@ -165,6 +191,7 @@ def state_diff_from_mean_request():
 @webserver.route('/api/mean_by_category', methods=['POST'])
 def mean_by_category_request():
     data = request.json
+    logger.info('Entering with parameters: %s', data)
 
     job_id = webserver.job_counter
     webserver.job_counter += 1
@@ -182,6 +209,7 @@ def mean_by_category_request():
 @webserver.route('/api/state_mean_by_category', methods=['POST'])
 def state_mean_by_category_request():
     data = request.json
+    logger.info('Entering with parameters: %s', data)
 
     job_id = webserver.job_counter
     webserver.job_counter += 1
@@ -197,11 +225,30 @@ def state_mean_by_category_request():
     webserver.tasks_runner.coada_joburi.put(job_struct)
     return jsonify({"job_id": str(job_id) }), 200
 
-@webserver.route('/api/graceful_shutdown/<int:job_id>', methods=['GET'])
-def graceful_shutdown_response(job_id):
-    print(f"JobID is {job_id}")
+@webserver.route('/api/graceful_shutdown', methods=['GET'])
+def graceful_shutdown_response():
+    """
+    This endpoint makes the application shutdown 
+    in order to stop accepting requests
+    """
+    webserver.tasks_runner.graceful_shutdown()
 
-    return jsonify({"job_id": str(job_id) }), 200
+    return jsonify({"status": "done" }), 200
+
+
+@webserver.route('/api/jobs', methods=['GET'])
+def jobs_response():
+    """
+    This endpoint returns the job_ids up to that moment and their statuses
+    """
+    result = []
+    for job_id in webserver.tasks_runner.coada_joburi.queue:
+        if int(job_id) in webserver.tasks_runner.done_jobs:
+            result.append({"job_id_{job_id}" : "done"})
+        else:
+            result.append({"job_id_{job_id}" : "running"})
+
+    return jsonify({"status": "done", "data": result}), 200
 
 
 # You can check localhost in your browser to see what this displays
