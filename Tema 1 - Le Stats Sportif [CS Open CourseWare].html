@@ -1,0 +1,1173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0044)https://ocw.cs.pub.ro/courses/asc/teme/tema1 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>
+    Tema 1 - Le Stats Sportif    [CS Open CourseWare]
+  </title>
+
+  <meta name="generator" content="DokuWiki">
+<meta name="robots" content="index,follow">
+<meta name="date" content="2024-04-06T18:12:58+0300">
+<meta name="keywords" content="asc,teme,tema1">
+<link rel="search" type="application/opensearchdescription+xml" href="https://ocw.cs.pub.ro/courses/lib/exe/opensearch.php" title="CS Open CourseWare">
+<link rel="start" href="https://ocw.cs.pub.ro/courses/">
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://ocw.cs.pub.ro/courses/feed.php">
+<link rel="alternate" type="application/rss+xml" title="Current Namespace" href="https://ocw.cs.pub.ro/courses/feed.php?mode=list&amp;ns=asc:teme">
+<link rel="alternate" type="text/html" title="Plain HTML" href="https://ocw.cs.pub.ro/courses/_export/xhtml/asc/teme/tema1">
+<link rel="canonical" href="http://ocw.cs.pub.ro/courses/asc/teme/tema1">
+<link rel="stylesheet" type="text/css" href="./Tema 1 - Le Stats Sportif [CS Open CourseWare]_files/css.php">
+<script type="text/javascript">/*<![CDATA[*/var NS='asc:teme';var JSINFO = {"id":"asc:teme:tema1","namespace":"asc:teme","isadmin":0,"isauth":0};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="./Tema 1 - Le Stats Sportif [CS Open CourseWare]_files/js.php"></script>
+<script type="text/x-mathjax-config;executed=true">/*<![CDATA[*/MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+        displayMath: [ ["$$","$$"], ["\\[","\\]"] ],
+        processEscapes: true
+    }
+});
+/*!]]>*/</script>
+<script src="./Tema 1 - Le Stats Sportif [CS Open CourseWare]_files/MathJax.js.download" id=""></script>
+<script type="text/javascript">/*<![CDATA[*/
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		  
+/*!]]>*/</script><script src="./Tema 1 - Le Stats Sportif [CS Open CourseWare]_files/ga.js.download" type="text/javascript"></script>
+<script type="text/javascript">/*<![CDATA[*/
+var pageTracker = _gat._getTracker("UA-38383934-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+		  
+/*!]]>*/</script>
+
+  <link rel="shortcut icon" href="https://ocw.cs.pub.ro/courses/lib/tpl/arctic/images/favicon.ico">
+
+  
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div>
+<div id="wrapper" class="show">
+  <div class="dokuwiki">
+
+    
+    <div class="stylehead">
+      <div class="header">
+        <div class="pagename">
+          <a href="https://ocw.cs.pub.ro/courses/asc/"><img height="70" src="./Tema 1 - Le Stats Sportif [CS Open CourseWare]_files/sigla_asc.png"> </a>        </div>
+        <div class="logo">
+          <a style="color: #AAA !important;" href="https://ocw.cs.pub.ro/courses/">Open CourseWare</a>        </div>
+      </div>
+    
+       
+      <div class="breadcrumbs">
+              </div>
+      
+            </div>
+
+                  <div class="bar" id="bar__top">
+        <div class="bar-left">
+                  </div>
+        <div class="bar-right">
+          <a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1?do=recent" class="action recent" accesskey="r" rel="nofollow" title="Recent changes [R]">Recent changes</a><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1?do=login&amp;sectok=9375c7f3596590a604caea07dbbb2fa3" class="action login" rel="nofollow" title="Login">Login</a>        </div>
+    </div>
+        
+    
+    
+    
+              <div class="left_page">
+          
+<h1 class="sectionedit1" id="tema_1_-_le_stats_sportif">Tema 1 - Le Stats Sportif</h1>
+<div class="level1">
+
+<p>
+</p><p></p><div class="noteimportant">
+<p></p>
+<ul>
+<li class="level1"><div class="li"> <strong>Deadline:</strong> <del>7 aprilie</del> 14 aprilie 2024, ora 23:55. Primiți un bonus de 10% pentru trimiterea temei cu 2 zile înaintea datei de 7 aprilie, adică înainte de <del>5</del> 10 aprilie 2024, ora 23:55.</div>
+</li>
+</ul>
+
+<p>
+    <del>* <strong>Deadline hard:</strong> 14 aprilie 2024, ora 23:55. Veți primi o depunctare de 10% din punctajul maxim al temei pentru fiecare zi de întârziere, până la maxim 7 zile, adică până pe 14 aprilie 2024, ora 23:55.</del>
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>Responsabili:</strong> <a href="mailto:andreicatalin.ouatu@gmail.com" class="mail" title="andreicatalin.ouatu@gmail.com"> Andrei Ouatu</a>, <a href="mailto:andreitrifu.acs@gmail.com" class="mail" title="andreitrifu.acs@gmail.com">Andrei Trifu</a>, <a href="mailto:adumitrescu2708@stud.acs.upb.ro" class="mail" title="adumitrescu2708@stud.acs.upb.ro"> Alexandra Dumitrescu</a>,<a href="mailto:eduard.staniloiu@cs.pub.ro" class="mail" title="eduard.staniloiu@cs.pub.ro"> Eduard Stăniloiu</a>, <a href="mailto:radunichita99@gmail.com" class="mail" title="radunichita99@gmail.com"> Radu Nichita</a>, <a href="mailto:ioana.profeanu@gmail.com" class="mail" title="ioana.profeanu@gmail.com"> Ioana Profeanu</a>, <a href="mailto:giorgiana.vlasceanu@gmail.com" class="mail" title="giorgiana.vlasceanu@gmail.com"> Giorgiana Vlăsceanu</a> </div>
+</li>
+<li class="level2"><div class="li"> <strong>Autori:</strong> <a href="mailto:eduard.staniloiu@cs.pub.ro" class="mail" title="eduard.staniloiu@cs.pub.ro"> Eduard Stăniloiu</a>, <a href="mailto:giorgiana.vlasceanu@gmail.com" class="mail" title="giorgiana.vlasceanu@gmail.com"> Giorgiana Vlăsceanu</a></div>
+</li>
+</ul>
+
+<p>
+
+</p></div><p></p>
+<p></p>
+
+<p>
+</p><p></p><div class="notetip">
+<p></p>
+<ul>
+<li class="level1"><div class="li"> Dată publicare: 25 martie</div>
+</li>
+<li class="level1"><div class="li"> Actualizare deadline: 2 aprilie</div>
+</li>
+</ul>
+
+<p>
+
+</p></div><p></p>
+<p></p>
+
+</div>
+
+<h2 class="sectionedit2" id="scopul_temei">Scopul temei</h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> Utilizarea eficientă a elementelor de sincronizare studiate la laborator</div>
+</li>
+<li class="level1"><div class="li"> Implementarea unei aplicații concurente utilizând o problemă clasică (client - server)</div>
+</li>
+<li class="level1"><div class="li"> Aprofundarea anumitor elemente din Python (clase, elemente de sintaxă, threaduri, sincronizare, precum și folosirea modulelor Python pentru lucrul cu threaduri)</div>
+</li>
+</ul>
+
+</div>
+
+<h2 class="sectionedit3" id="enunt">Enunț</h2>
+<div class="level2">
+
+<p>
+În cadrul acestei teme veți avea de implementat un server python care va gestiona o serie de requesturi plecând de la un set de date în format *csv* (comma separated values).
+Serverul va oferi statistici pe baza datelor din csv.
+</p>
+
+</div>
+
+<h4 id="setul_de_date">Setul de date</h4>
+<div class="level4">
+
+<p>
+<a href="https://catalog.data.gov/dataset/nutrition-physical-activity-and-obesity-behavioral-risk-factor-surveillance-system" class="urlextern" title="https://catalog.data.gov/dataset/nutrition-physical-activity-and-obesity-behavioral-risk-factor-surveillance-system" rel="nofollow">Setul de date</a> conține informații despre nutriție, activitatea fizică și obezitate în Statele Unite ale Americii în perioada 2011 - 2022.
+Datele au fost colectate de către U.S. Department of Health &amp; Human Services.
+Informațiile sunt colectate per stat american (ex. California, Utah, New York) și răspund următorului <strong>set de întrebări</strong>:
+</p>
+<ul>
+<li class="level1"><div class="li"> 'Percent of adults who engage in no leisure-time physical activity'</div>
+</li>
+<li class="level1"><div class="li"> 'Percent of adults aged 18 years and older who have obesity'</div>
+</li>
+<li class="level1"><div class="li"> 'Percent of adults aged 18 years and older who have an overweight classification'</div>
+</li>
+<li class="level1"><div class="li"> 'Percent of adults who achieve at least 300 minutes a week of moderate-intensity aerobic physical activity or 150 minutes a week of vigorous-intensity aerobic activity (or an equivalent combination)'</div>
+</li>
+<li class="level1"><div class="li"> 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic physical activity and engage in muscle-strengthening activities on 2 or more days a week'</div>
+</li>
+<li class="level1"><div class="li"> 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic activity (or an equivalent combination)'</div>
+</li>
+<li class="level1"><div class="li"> 'Percent of adults who engage in muscle-strengthening activities on 2 or more days a week'</div>
+</li>
+<li class="level1"><div class="li"> 'Percent of adults who report consuming fruit less than one time daily'</div>
+</li>
+<li class="level1"><div class="li"> 'Percent of adults who report consuming vegetables less than one time daily'</div>
+</li>
+</ul>
+
+<p>
+Valorile pe care le veți folosi în calculul diverselor statistici la care răspunde aplicația voastră se găsesc în coloana <strong>Data_Value</strong>.
+</p>
+
+</div>
+
+<h2 class="sectionedit4" id="detalii_de_implementare">Detalii de implementare</h2>
+<div class="level2">
+
+<p>
+Aplicația server pe care o dezvoltați este una multi-threaded.
+Atunci când serverul este pornit, trebuie să încărcați fișierul csv și să extrageți informațiile din el a.î. să puteți calcula statisticile cerute la nivel de request.
+</p>
+
+<p>
+Întrucât procesarea datelor din csv poate dura mai mult timp, modelul implementat de către server va fi următorul:
+ * un endpoit (ex. '/api/states_mean') care primește requestul și va întoarce clientului un <strong>job_id</strong> (ex. “job_id_1”, “job_id_2”, …, “job_id_n”)
+ * endpointul '/api/get_results/job_id' care va verifica dacă job_id-ul este valid, rezultatul calculului este gata sau nu și va returna un răspuns corespunzător (detalii mai jos)
+</p>
+
+</div>
+
+<h4 id="mecanica_unui_request">Mecanica unui request</h4>
+<div class="level4">
+
+<p>
+Asociază un job_id requestului, pune jobul (closure care încalsulează unitatea de lucru) într-o coadă de joburi care este procesată de către un <strong>Thread pool</strong>, incrementează job_id-ul intern și returnează clientului job_id-ul asociat.
+</p>
+
+<p>
+Un thread va prelua un job din coada de joburi, va efectua operația asociată (ceea ce a fost capturat de către closure) și va scrie rezultatul calculului într-un fișier cu numele job_id-ului în directorul <strong>results/</strong>.
+</p>
+
+</div>
+
+<h4 id="requesturile_pe_care_trebuie_sa_le_implementati_sunt">Requesturile pe care trebuie să le implementați sunt</h4>
+<div class="level4">
+
+</div>
+
+<h5 id="apistates_mean">/api/states_mean</h5>
+<div class="level5">
+
+<p>
+Primește o întrebare (din <strong>setul de întrebări</strong> de mai sus) și calculează media valorilor înregistrate (<strong>Data_Value</strong>) din intervalul total de timp (2011 - 2022) pentru fiecare stat, și sortează crescător după medie.
+</p>
+
+</div>
+
+<h5 id="apistate_mean">/api/state_mean</h5>
+<div class="level5">
+
+<p>
+Primește o întrebare (din <strong>setul de întrebări</strong> de mai sus) și un stat, și calculează media valorilor înregistrate (<strong>Data_Value</strong>) din intervalul total de timp (2011 - 2022).
+</p>
+
+</div>
+
+<h5 id="apibest5">/api/best5</h5>
+<div class="level5">
+
+<p>
+Primește o întrebare (din <strong>setul de întrebări</strong> de mai sus) și calculează media valorilor înregistrate (<strong>Data_Value</strong>) din intervalul total de timp (2011 - 2022) și întoarce primele 5 state.
+</p>
+
+</div>
+
+<h5 id="apiworst5">/api/worst5</h5>
+<div class="level5">
+
+<p>
+Primește o întrebare (din <strong>setul de întrebări</strong> de mai sus) și calculează media valorilor înregistrate (<strong>Data_Value</strong>) din intervalul total de timp (2011 - 2022) și întoarce ultimele 5 state.
+</p>
+
+<p>
+</p><p></p><div class="notetip">
+În funcție de întrebare, primele state pot să aibă fie cel mai mic sau cel mai mare scor.
+De exemplu, pentru întrebarea: “Percent of adults who engage in no leisure-time physical activity”, primele state (best) vor avea scorurile cele mai mici, iar worst vor avea scorurile cele mai mari.
+Pentru întrebarea: “Percent of adults who engage in muscle-strengthening activities on 2 or more days a week”, primele state (best) vor avea scorurile cele mai mari, iar worst vor avea scorurile cele mai mici.
+
+</div><p></p>
+<p></p>
+
+</div>
+
+<h5 id="apiglobal_mean">/api/global_mean</h5>
+<div class="level5">
+
+<p>
+Primește o întrebare (din <strong>setul de întrebări</strong> de mai sus) și calculează media valorilor înregistrate (<strong>Data_Value</strong>) din intervalul total de timp (2011 - 2022) din întregul set de date.
+</p>
+
+</div>
+
+<h5 id="apidiff_from_mean">/api/diff_from_mean</h5>
+<div class="level5">
+
+<p>
+Primește o întrebare (din <strong>setul de întrebări</strong> de mai sus) și calculează diferența dintre global_mean și state_mean pentru toate statele.
+</p>
+
+</div>
+
+<h5 id="apistate_diff_from_mean">/api/state_diff_from_mean</h5>
+<div class="level5">
+
+<p>
+Primește o întrebare (din <strong>setul de întrebări</strong> de mai sus) și un stat, și calculează diferența dintre global_mean și state_mean pentru statul respectiv.
+</p>
+
+</div>
+
+<h5 id="apimean_by_category">/api/mean_by_category</h5>
+<div class="level5">
+
+<p>
+Primește o întrebare (din <strong>setul de întrebări</strong> de mai sus) și calculează valoarea medie pentru fiecare segment (<strong>Stratification1</strong>) din categoriile (<strong>StratificationCategory1</strong>) fiecărui stat.
+</p>
+
+</div>
+
+<h5 id="apistate_mean_by_category">/api/state_mean_by_category</h5>
+<div class="level5">
+
+<p>
+Primește o întrebare (din <strong>setul de întrebări</strong> de mai sus) și un stat, și calculează valoarea medie pentru fiecare segment (<strong>Stratification1</strong>) din categoriile (<strong>StratificationCategory1</strong>).
+</p>
+
+</div>
+
+<h5 id="apigraceful_shutdown">/api/graceful_shutdown</h5>
+<div class="level5">
+
+<p>
+Răspunde la un apel de tipul GET și va duce la notificarea Thread Poolului despre încheierea procesării.
+Scopul acesteia este de a închide aplicația într-un mod graceful: nu se mai acceptă requesturi noi, se termină de procesat requesturile înregistrate până în acel moment (drain mode) și apoi aplicația poate fi oprită.
+</p>
+
+</div>
+
+<h5 id="apijobs">/api/jobs</h5>
+<div class="level5">
+
+<p>
+Răspunde la un apel de tipul GET cu un JSON care conține toate JOB_ID-urile de până la acel moment și statusul lor.
+De exemplu:
+</p>
+<pre class="code">{
+  "status": "done"
+  "data": [
+    { "job_id_1": "done"},
+    { "job_id_2": "running"},
+    { "job_id_3": "running"}
+  ]
+}</pre>
+
+</div>
+
+<h5 id="apinum_jobs">/api/num_jobs</h5>
+<div class="level5">
+
+<p>
+Răspunde la un apel de tipul GET cu numărul joburilor rămase de procesat.
+După un /api/graceful_shutdown și o perioadă de timp, aceasta ar trebui să întoarcă valoarea 0, semnalând astfel că serverul flask poate fi oprit.
+</p>
+
+</div>
+
+<h5 id="apiget_resultsjob_id">/api/get_results/&lt;job_id&gt;</h5>
+<div class="level5">
+
+<p>
+Răspunde la un apel de tipul GET (job_id-ul este parte din <abbr title="Uniform Resource Locator">URL</abbr>).
+Acesta verifică dacă job_id-ul primit este valid și răspunde cu un JSON corespunzător, după cum urmează:
+</p>
+
+<p>
+1. JOB_ID-ul este invalid
+</p>
+<pre class="code">{
+  "status": "error",
+  "reason": "Invalid job_id"
+}</pre>
+
+<p>
+2. JOB_ID-ul este valid, dar rezultatul procesării nu este gata
+</p>
+<pre class="code">{
+  "status": "running",
+}</pre>
+
+<p>
+3. JOB_ID-ul este valid și rezultatul procesării este gata
+</p>
+<pre class="code">{
+  "status": "done",
+  "data": &lt;JSON_REZULTAT_PROCESARE&gt;
+}</pre>
+
+</div>
+
+<h4 id="server">Server</h4>
+<div class="level4">
+
+<p>
+Implementarea serverului se face folosind framework-ul <strong>flask</strong> și va extinde scheletul de cod oferit.
+Mai multe detalii despre Flask găsiți mai jos.
+Deasemeni, un tutorial extensiv (pe care vi-l recomandăm) este <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world" class="urlextern" title="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world" rel="nofollow">The flask mega tutorial</a>.
+</p>
+
+<p>
+Python Flask este un micro-framework web open-source care permite dezvoltatorilor să creeze aplicații web ușor și rapid, folosind limbajul de programare Python.
+Flask este minimalist și flexibil, oferind un set de instrumente de bază pentru crearea unei aplicații web, cum ar fi rutele <abbr title="Uniform Resource Locator">URL</abbr>, gestionarea cererilor și a sesiunilor, șablonarea și gestionarea cookie-urilor.
+Cu Flask, dezvoltatorii pot construi rapid <abbr title="Application Programming Interface">API</abbr>-uri sau aplicații web de dimensiuni mici și medii.
+</p>
+
+</div>
+
+<h5 id="instalare_si_activarea_mediului_de_lucru">Instalare și activarea mediului de lucru</h5>
+<div class="level5">
+
+<p>
+Pentru a instala Flask, creați-vă un mediu virtual (pentru a nu instala pachete global, pe sistem) folosind comanda
+</p>
+<pre class="code">$ python -m venv venv</pre>
+
+<p>
+Activați mediul virtual
+</p>
+<pre class="code">$ source venv/bin/activate</pre>
+
+<p>
+Și instalați pachetele din fișierul <strong>requirements.txt</strong>
+</p>
+<pre class="code">$ python -m pip install -r requirements.txt</pre>
+
+<p>
+Pașii de creare a mediului virtual și de instalare a pachetelor se regăsesc în fișierul Makefile.
+Astfel, pentru a vă crea spațiul de lucru, rulați următoarele comenzi în interpretorul vostru de comenzi (verificat în <code>bash</code> și <code>zsh</code>)
+</p>
+<pre class="code">make create_venv
+source venv/bin/activate
+make install</pre>
+
+</div>
+
+<h5 id="quickstart">Quickstart</h5>
+<div class="level5">
+
+<p>
+O rută în cadrul unei aplicații web, cum ar fi în Flask, reprezintă un <abbr title="Uniform Resource Locator">URL</abbr> (Uniform Resource Locator) specific către care aplicația web va răspunde cu un anumit conținut sau funcționalitate.
+Atunci când un client (de obicei un browser web) face o cerere către serverul web care găzduiește aplicația Flask, ruta determină ce cod va fi executat și ce răspuns va fi returnat clientului.
+În Flask, rutele sunt definite folosind decoratori care leagă funcții Python de <abbr title="Uniform Resource Locator">URL</abbr>-uri specifice, permitând astfel aplicației să răspundă în mod dinamic la cereri (requesturi).
+</p>
+
+<p>
+În Flask, puteți defini o rută care răspunde la un apel de tip <strong>GET</strong> folosind decoratorul <strong>@app.route()</strong> și specificând metoda *HTTP* (<strong>methods=['GET']</strong>).
+Pentru a răspunde la un apel de tipul <strong>POST</strong> (apel folosit pentru a trimite date de către un client către server) folosim același decorator și specificăm <strong>methods=['POST']</strong>.
+De exemplu:
+</p>
+<pre class="code">from flask import request
+
+@app.route('/', methods=['GET'])
+def index():
+    return 'Aceasta este o rută care răspunde la un apel de tip GET'
+
+@app.route('/post', methods=['POST'])
+def post_route():
+    data = request.json  # Se obțin datele JSON trimise prin POST
+    return 'Aceasta este o rută care răspunde la un apel de tip POST'</pre>
+
+<p>
+În cazul <abbr title="Application Programming Interface">API</abbr>-urilor este un best practice ca datele returnate să fie în format JSON, pentru a fi ușor de prelucrat de către alte servicii în mod programatic.
+Pentru a returna un obiect JSON în Flask, vom folosi helperul <strong>jsonify()</strong> ca în exemplul de mai jos:
+</p>
+<pre class="code">from flask import request, jsonify
+
+@webserver.route('/api/post_endpoint', methods=['POST'])
+def post_endpoint():
+    if request.method == 'POST':
+        # Presupunem că metoda conține date JSON
+        data = request.json
+        print(f"got data in post {data}")
+        
+        # Procesăm datele primite
+        # Pentru exemplu, vom returna datele primite
+        response = {"message": "Received data successfully", "data": data}
+        return jsonify(response)
+    else:
+        # Nu acceptăm o altă metodă
+        return jsonify({"error": "Method not allowed"}), 405</pre>
+
+</div>
+
+<h4 id="structura_input-ului_si_a_output-ului">Structura input-ului și a output-ului</h4>
+<div class="level4">
+
+<p>
+Interacțiunea cu serverul se va face pe bază de mesaje JSON, după cum este descris mai jos.
+Vă recomandăm să vă uitați în suita de teste, în directoarele input și output pentru a vedea informațiile mult mai detaliat.
+</p>
+
+</div>
+
+<h5 id="input">Input</h5>
+<div class="level5">
+
+<p>
+Un input pentru un request care primește doar o întrebare în următorul format:
+</p>
+<pre class="code">{
+  "question": "Percent of adults aged 18 years and older who have an overweight classification"
+}</pre>
+
+<p>
+Unul care așteaptă o întrebare și un stat are următorul format:
+</p>
+<pre class="code">{
+  "question": "Percent of adults who engage in no leisure-time physical activity",
+  "state": "South Carolina"
+}</pre>
+
+</div>
+
+<h5 id="output">Output</h5>
+<div class="level5">
+
+<p>
+Un răspuns JSON va avea mereu structura:
+</p>
+<pre class="code">{
+  "status": "done",
+  "data": &lt;JSON_REZULTAT_PROCESARE&gt;
+}</pre>
+
+<p>
+<strong>JSON_REZULTAT_PROCESARE</strong> este un obiect JSON așa cum se regăsește în directorul output, pentru fiecare endpoint din directorul tests.
+</p>
+
+</div>
+
+<h2 class="sectionedit5" id="testare">Testare</h2>
+<div class="level2">
+
+<p>
+Testarea se va realiza folosind atât unitteste, cât și teste funcționale.
+</p>
+
+</div>
+
+<h3 class="sectionedit6" id="rularea_testelor">Rularea testelor</h3>
+<div class="level3">
+
+<p>
+Pentru a rula testele, folosiți fișierul <code>Makefile</code>.
+Într-un shell 1) activați mediul virtual și 2) porniți serverul
+</p>
+<pre class="code">source venv/bin/activate
+make run_server</pre>
+
+<p>
+Într-un alt shell 1) activați mediul virtual și 2) porniți checkerul
+</p>
+<pre class="code">source venv/bin/activate
+make run_tests</pre>
+
+<p>
+</p><p></p><div class="noteimportant">
+Trebuie să vă asigurați că ați activat mediul virtual înainte de a rula comenzile din make.
+<p></p>
+<pre class="code">source venv/bin/activate</pre>
+
+<p>
+Dacă nu ați activat mediul virtual, <code>make</code> vă va arunca următoarea eroare (linia, ex 8, poate să difere).
+</p>
+<pre class="code">Makefile:8: *** "You must activate your virtual environment. Exiting...".  Stop.</pre>
+
+<p>
+
+</p></div><p></p>
+<p></p>
+
+</div>
+
+<h3 class="sectionedit7" id="unittesting">Unittesting</h3>
+<div class="level3">
+
+<p>
+Pentru testarea funcțiilor din <strong>server</strong> veți folosi modulul de <a href="https://docs.python.org/3/library/unittest.html" class="urlextern" title="https://docs.python.org/3/library/unittest.html" rel="nofollow"> unittesting</a> al limbajului Python.
+</p>
+<div class="hiddenGlobal  hiddenActive hiddenHidden"><div class="hiddenElements"></div><div class="hiddenHead  hiddenSinceBeginning"><div class="hiddenOnHidden">
+<p>
+Click pentru sumar despre unittesting
+</p>
+</div><div class="hiddenOnVisible">
+<p>
+Click pentru sumar despre unittesting
+</p>
+</div></div> <!-- .hiddenHead --><div class="hiddenBody">
+<p>
+Pentru a defini un set de unitteste trebuie să vă definiți o clasă care moștenește clasa <code>unittest.TestCase</code>
+</p>
+<dl class="code">
+<dt><a href="https://ocw.cs.pub.ro/courses/_export/code/asc/teme/tema1?codeblock=17" title="Download Snippet" class="mediafile mf_py">demo_unittest.py</a></dt>
+<dd><pre class="code python"><span class="kw1">import</span> <span class="kw3">unittest</span>
+&nbsp;
+<span class="kw1">class</span> TestStringMethods<span class="br0">(</span><span class="kw3">unittest</span>.<span class="me1">TestCase</span><span class="br0">)</span>:
+&nbsp;
+    <span class="kw1">def</span> test_upper<span class="br0">(</span><span class="kw2">self</span><span class="br0">)</span>:
+        <span class="kw2">self</span>.<span class="me1">assertEqual</span><span class="br0">(</span><span class="st0">'foo'</span>.<span class="me1">upper</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">,</span> <span class="st0">'FOO'</span><span class="br0">)</span></pre>
+</dd></dl>
+
+<p>
+Pentru a defini un test, numele metodei trebuie să înceapă cu prefixul <code>test_</code>, așa cum puteți observa în exemplul de mai sus: <code>test_upper</code>.
+Verificările din corpul metodei se fac folosind metodele <code>assert*</code>, în exemplul de mai sus a fost folosită metoda <code>assertEqual</code>. O listă completă a metodelor de verificare disponibile este prezentată în <a href="https://docs.python.org/3/library/unittest.html#assert-methods" class="urlextern" title="https://docs.python.org/3/library/unittest.html#assert-methods" rel="nofollow"> documentație</a>.
+</p>
+
+<p>
+Pentru a rula testele, folosim subcomanda unittest:
+</p>
+<pre class="code bash">$ python3 <span class="re5">-m</span> unittest demo_unittest.py
+$ <span class="co0"># puteti folosi optiunea -v pentru mai multe detalii</span>
+$ python3 <span class="re5">-m</span> unittest <span class="re5">-v</span> demo_unittest.py</pre>
+</div></div>
+<p>
+Pentru a testa comportamentul definiți în fișierul <code>unittests/TestWebserver.py</code> o clasă de testare numită <code>TestWebserver</code>.
+Clasa <code>TestWebserver</code> va testa funcționalitatea tuturor rutelor definite de voi.
+Dacă definiți alte metode, va trebui să adăugați teste și pentru acestea.
+</p>
+
+<p>
+Vă recomandăm să folosiți metoda <a href="https://docs.python.org/3/library/unittest.html#unittest.TestCase.setUp" class="urlextern" title="https://docs.python.org/3/library/unittest.html#unittest.TestCase.setUp" rel="nofollow"> setUp</a> pentru a inițializa o instanță a clasei testate și orice altceva ce vă ajută în testarea codului.
+Un exemplu de utilizare a metodei <code>setUp</code> este disponibil în <a href="https://docs.python.org/3/library/unittest.html#organizing-test-code" class="urlextern" title="https://docs.python.org/3/library/unittest.html#organizing-test-code" rel="nofollow"> documentație</a>.
+</p>
+
+</div>
+
+<h2 class="sectionedit8" id="logging">Logging</h2>
+<div class="level2">
+
+<p>
+Vrem să utilizăm fișiere de logging în aplicațiile pe care le dezvoltăm pentru a putea urmări flowul acestora a.î. să ne ajute în procesul de debug.
+</p>
+
+<p>
+Folosind modulul de <a href="https://docs.python.org/3/library/logging.html" class="urlextern" title="https://docs.python.org/3/library/logging.html" rel="nofollow"> logging</a>, trebuie să implementați un fișier de log, numit “webserver.log”, în care veți urmări comportamentul serverului.
+</p>
+
+<p>
+În fișierul de log veți nota, folosind nivelul <code>info()</code>, toate intrările și ieșirile în/din rutele implementate.
+În cazul metodelor care au parametrii de intrare, informația afișată la intrarea în funcție va afișa și valorile parametrilor.
+Fișierul va fi implementat folosind <a href="https://docs.python.org/3/library/logging.handlers.html#logging.handlers.RotatingFileHandler" class="urlextern" title="https://docs.python.org/3/library/logging.handlers.html#logging.handlers.RotatingFileHandler" rel="nofollow"> RotatingFileHandler</a>: astfel se poate specifica o dimensiune maximă a fișierului de log și un număr maxim de copii istorice. RotatingFileHandler ne permite să ținem un istoric al logurilor, fișierele fiind stocate sub forma “file.log”, “file.log.1”, “file.log.2”, … “file.log.max”.
+</p>
+
+<p>
+Vă încurajăm să folosiți fișierul de log și pentru a înregistra <a href="https://docs.python.org/3/library/logging.html#logging.Logger.error" class="urlextern" title="https://docs.python.org/3/library/logging.html#logging.Logger.error" rel="nofollow"> erori</a> detectate.
+</p>
+
+<p>
+În mod implicit, timestamp-ul logurilor folosește timpul mașinii pe care rulează aplicația (local time). Acest lucru nu este de dorit în practică deoarece nu putem compara loguri de pe mașini aflate în zone geografice diferite. Din acest motiv, timestampul este ținut în format UTC/GMT.
+Asigurați-vă că folosiți gmtime, și nu localtime. Pentru aceasta trebuie să folosiți metoda <a href="https://docs.python.org/3/library/logging.html#logging.Formatter.formatTime" class="urlextern" title="https://docs.python.org/3/library/logging.html#logging.Formatter.formatTime" rel="nofollow"> formatTime</a>. 
+</p>
+
+<p>
+O descriere completă a cum puteți utiliza modului de logging este prezentă în categoria <a href="https://docs.python.org/3/howto/logging.html" class="urlextern" title="https://docs.python.org/3/howto/logging.html" rel="nofollow"> HOWTO</a> a documentației.
+</p>
+
+</div>
+
+<h2 class="sectionedit9" id="precizari_incarcare">Precizări încărcare</h2>
+<div class="level2">
+
+<p>
+Arhiva temei va fi încărcată pe <a href="https://curs.upb.ro/2023/mod/assign/view.php?id=157094" class="urlextern" title="https://curs.upb.ro/2023/mod/assign/view.php?id=157094" rel="nofollow">moodle</a>
+</p>
+
+<p>
+Arhiva (fişier .zip) trebuie să conțină:
+</p>
+<ul>
+<li class="level1"><div class="li"> fișierele temei și alte fișiere <code>.py</code> folosite în dezvoltare ()</div>
+</li>
+<li class="level1"><div class="li"> <code>README</code></div>
+</li>
+<li class="level1"><div class="li"> (opțional) fișierul <code>git-log</code> (Îl obțineți rulând comanda <code>git log &gt; git-log</code>)</div>
+</li>
+<li class="level1"><div class="li"> un exemplu de conținut al arhivei este mai jos</div>
+</li>
+</ul>
+<pre class="code">    api_server.py
+    app/
+    app/routes.py
+    app/task_runner.py
+    app/data_ingestor.py
+    app/__init__.py
+    README
+    unittests/
+    unittests/mytests.py
+    git-log
+    </pre>
+
+<p>
+</p><p></p><div class="noteclassic">
+Repository-ul pe care îl folosiți în procesul de implementare este necesar să fie privat.
+
+</div><p></p>
+<p></p>
+
+<p>
+</p><p></p><div class="notetip">
+Pentru a documenta realizarea temei, vă recomandăm să folosiți template-ul de <a href="https://gitlab.cs.pub.ro/asc/asc-public/-/blob/master/assignments/README.example.md" class="urlextern" title="https://gitlab.cs.pub.ro/asc/asc-public/-/blob/master/assignments/README.example.md" rel="nofollow">aici</a>
+
+</div><p></p>
+<p></p>
+
+</div>
+
+<h2 class="sectionedit10" id="punctare">Punctare</h2>
+<div class="level2">
+
+<p>
+</p><p></p><div class="noteimportant">Tema va fi verificată automat, folosind infrastructura de testare, pe baza unor teste definite în directorul <code>tests</code>. 
+</div><p></p>
+<p></p>
+
+<p>
+Tema se va implementa <strong>Python&gt;=3.7</strong>.
+</p>
+
+<p>
+Notarea va consta în 80 pct acordate egale între testele funcționale, 10 pct acordate pentru unitteste și 10 pct acordate pentru fișierul de logging. Depunctări posibile sunt:
+</p>
+<ul>
+<li class="level1"><div class="li"> folosirea incorectă a variabilelor de sincronizare (ex: lock care nu protejează toate accesele la o variabilă partajată, notificări care se pot pierde) (-2 pct)</div>
+</li>
+<li class="level1"><div class="li"> prezența print-urilor de debug (maxim -10 pct în funcție de gravitate)</div>
+</li>
+<li class="level1"><div class="li"> folosirea lock-urilor globale (-10 pct)</div>
+</li>
+<li class="level1"><div class="li"> folosirea variabilelor globale/statice (-5 pct)</div>
+<ul>
+<li class="level2"><div class="li"> Variabilele statice pot fi folosite doar pentru constante</div>
+</li>
+</ul>
+</li>
+<li class="level1"><div class="li"> folosirea inutilă a variabilelor de sincronizare (ex: se protejează operații care sunt deja thread-safe) (-5 pct)</div>
+</li>
+<li class="level1"><div class="li"> alte ineficiențe (ex: creare obiecte inutile, alocare obiecte mai mari decât e necesar, etc.) (-5 pct)</div>
+</li>
+<li class="level1"><div class="li"> lipsa organizării codului, implementare încâlcită și nemodulară, cod duplicat, funcții foarte lungi (între -1pct și -5 pct în funcție de gravitate)</div>
+</li>
+<li class="level1"><div class="li"> cod înghesuit/ilizibil, inconsistenţa stilului - vedeți secțiunea Pylint</div>
+<ul>
+<li class="level2"><div class="li"> pentru code-style recomandăm ghidul oficial  <a href="https://www.python.org/dev/peps/pep-0008/" class="urlextern" title="https://www.python.org/dev/peps/pep-0008/" rel="nofollow">PEP-8</a></div>
+</li>
+</ul>
+</li>
+<li class="level1"><div class="li"> cod comentat/nefolosit (-1 pct)</div>
+</li>
+<li class="level1"><div class="li"> lipsa comentariilor utile din cod (-5 pct)</div>
+</li>
+<li class="level1"><div class="li"> fişier README sumar (până la -5 pct)</div>
+</li>
+<li class="level1"><div class="li"> nerespectarea formatului .zip al arhivei (-2 pct)</div>
+</li>
+<li class="level1"><div class="li"> alte situaţii nespecificate, dar considerate inadecvate având în vedere obiectivele temei; în special situațiile de modificare a interfeței oferite</div>
+</li>
+</ul>
+
+<p>
+Se acordă bonus 5 pct pentru adăugarea directorului <code>.git</code> și utilizarea versionării în cadrul repository-ului.
+</p>
+
+<p>
+</p><p></p><div class="notewarning">
+Temele vor fi testate împotriva plagiatului. Orice tentativă de copiere va fi depunctată conform <a href="https://ocw.cs.pub.ro/courses/asc/regulament" class="wikilink1" title="asc:regulament">regulamentului</a>.
+Rezultatele notării automate este orientativă și poate fi afectată de corectarea manuală.
+
+</div><p></p>
+<p></p>
+
+</div>
+
+<h3 class="sectionedit11" id="pylint">Pylint</h3>
+<div class="level3">
+
+<p>
+Vom testa sursele voastre cu <a href="https://www.pylint.org/" class="urlextern" title="https://www.pylint.org/" rel="nofollow">pylint</a> configurat conform fișierului <strong><code>pylintrc</code></strong> din cadrul repo-ului dedicat temei. Atenție, <em class="u">rulăm pylint doar pe modulele completate și adăugate de voi</em>, nu și pe cele ale testerului. 
+</p>
+
+<p>
+Deoarece apar diferențe de scor între versiuni diferite de pylint, vom testa temele doar cu <a href="https://www.pylint.org/#install" class="urlextern" title="https://www.pylint.org/#install" rel="nofollow"> ultima versiune</a>. Vă recomandăm să o folosiți și voi tot pe aceasta.
+</p>
+
+<p>
+Vom face depunctări de până la -5pct dacă verificarea făcută cu pylint vă dă un scor mai mic de 8.
+</p>
+
+</div>
+
+<h3 class="sectionedit12" id="observatii">Observații</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> Pot exista depunctări mai mari decât este specificat în secţiunea <a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#notare" title="asc:teme:tema1 ↵" class="wikilink1"> Notare</a> pentru implementări care nu respectă obiectivele temei și pentru situatii care nu sunt acoperite în mod automat de către sistemul de testare</div>
+</li>
+<li class="level1"><div class="li"> Implementarea şi folosirea metodelor oferite în schelet este obligatorie</div>
+</li>
+<li class="level1"><div class="li"> Puteți adăuga variabile/metode/clase, însă nu puteți schimba antetul metodelor oferite în schelet</div>
+</li>
+<li class="level1"><div class="li"> Bug-urile de sincronizare, prin natura lor sunt nedeterministe; o temă care conţine astfel de bug-uri poate obţine punctaje diferite la rulări succesive; în acest caz punctajul temei va fi cel dat de tester în momentul corectării</div>
+</li>
+<li class="level1"><div class="li"> Recomandăm testarea temei în cât mai multe situații de load al sistemului și pe cât mai multe sisteme pentru a descoperi bug-urile de sincronizare</div>
+</li>
+</ul>
+
+</div>
+
+<h2 class="sectionedit13" id="resurse_necesare_realizarii_temei">Resurse necesare realizării temei</h2>
+<div class="level2">
+
+<p>
+Pentru a clona <a href="https://gitlab.cs.pub.ro/asc/asc-public" class="urlextern" title="https://gitlab.cs.pub.ro/asc/asc-public" rel="nofollow"> repo-ul</a> și a accesa resursele temei 1:
+</p>
+<pre class="code bash"><span class="co4">student@asc:~$ </span><span class="kw2">git clone</span> https:<span class="sy0">//</span>gitlab.cs.pub.ro<span class="sy0">/</span>asc<span class="sy0">/</span>asc-public.git
+<span class="co4">student@asc:~$ </span><span class="kw3">cd</span> asc<span class="sy0">/</span>assignments
+student<span class="sy0">@</span>asc:~<span class="sy0">/</span>assignments$ <span class="kw3">cd</span> <span class="nu0">1</span>-le_stats_sportif</pre>
+
+</div>
+
+<h2 class="sectionedit14" id="suport_intrebari_si_clarificari">Suport, întrebări și clarificări</h2>
+<div class="level2">
+
+<p>
+Pentru întrebări sau nelămuriri legate de temă folosiți <a href="https://curs.upb.ro/2023/mod/forum/view.php?id=148546" class="urlextern" title="https://curs.upb.ro/2023/mod/forum/view.php?id=148546" rel="nofollow">forumul temei</a>. 
+</p>
+
+<p>
+</p><p></p><div class="noteimportant">
+Orice intrebare e recomandat să conțină o descriere cât mai clară a eventualei probleme. Întrebări de forma: “Nu merge X. De ce?” fără o descriere mai amănunțită vor primi un răspuns mai greu.
+<p></p>
+
+<p>
+<strong>ATENȚIE</strong> să nu postați imagini cu părți din soluția voastră pe forumul pus la dispoziție sau orice alt canal public de comunicație. Dacă veți face acest lucru, vă asumați răspunderea dacă veți primi copiat pe temă.
+</p>
+
+<p>
+
+</p></div><p></p>
+<p></p>
+
+</div>
+
+        </div>
+        <div class="right_sidebar">
+          <form action="https://ocw.cs.pub.ro/courses/start" accept-charset="utf-8" class="search" id="dw__search" method="get"><div class="no"><input type="hidden" name="do" value="search"><input type="text" id="qsearch__in" accesskey="f" name="id" class="edit" title="[F]"><input type="submit" value="Search" class="button" title="Search"><div id="qsearch__out" class="ajax_qsearch JSpopup" style="display: none;"></div></div></form>          <div class="namespace_sidebar sidebar_box">
+
+<h1 class="sectionedit1" id="navigare">Navigare</h1>
+<div class="level1">
+<ul>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/regulament" class="wikilink1" title="asc:regulament">Regulament</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/echipa" class="wikilink1" title="asc:echipa">Echipă</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/orar" class="wikilink1" title="asc:orar">Orar</a></div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT1 SECTION "Navigare" [1-387] -->
+<h1 class="sectionedit2" id="laboratoare">Laboratoare</h1>
+<div class="level1">
+
+<div><div id="nojs_indexmenu_57587445567c0eab0538fd" data-jsajax="" class="indexmenu_nojs">
+
+<ul class="idx">
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/laboratoare/01" class="wikilink1" title="asc:laboratoare:01">Laboratorul 01 - Introducere în limbajul Python</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/laboratoare/02" class="wikilink1" title="asc:laboratoare:02">Laboratorul 02 - Fire de execuție în Python</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/laboratoare/03" class="wikilink1" title="asc:laboratoare:03">Laboratorul 03 - Programare concurentă în Python (continuare)</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/laboratoare/04" class="wikilink1" title="asc:laboratoare:04">Laboratorul 04 - Arhitecturi de tip GPGPU</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/laboratoare/05" class="wikilink1" title="asc:laboratoare:05">Laboratorul 05 - Arhitectura GPU NVIDIA CUDA</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/laboratoare/06" class="wikilink1" title="asc:laboratoare:06">Laboratorul 06 - Advanced CUDA</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/laboratoare/07" class="wikilink1" title="asc:laboratoare:07">Laboratorul 07 - CUDA</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/laboratoare/08" class="wikilink1" title="asc:laboratoare:08">Laboratorul 08 - Arhitecturi de Microprocesoare si Sisteme de Calcul</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/laboratoare/09" class="wikilink1" title="asc:laboratoare:09">Laboratorul 09 - Tehnici de Optimizare de Cod – Inmultirea Matricelor</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/laboratoare/10" class="wikilink1" title="asc:laboratoare:10">Laboratorul 10 - Analiza Performantei Programelor</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/laboratoare/old-exercises" class="wikilink1" title="asc:laboratoare:old-exercises">Exerciții din alți ani</a></div></li>
+</ul>
+</div></div>
+
+</div>
+<!-- EDIT2 SECTION "Laboratoare" [388-447] -->
+<h1 class="sectionedit3" id="teme">Teme</h1>
+<div class="level1">
+<ul>
+<li class="level1"><div class="li"> <span class="curid"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1" class="wikilink1" title="asc:teme:tema1">Tema 1</a></span></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/teme/tema2" class="wikilink1" title="asc:teme:tema2">Tema 2</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/teme/tema3" class="wikilink1" title="asc:teme:tema3">Tema 3</a></div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT3 SECTION "Teme" [448-560] -->
+<h1 class="sectionedit4" id="resurse">Resurse</h1>
+<div class="level1">
+
+<div><div id="nojs_indexmenu_104949050567c0eab055781" data-jsajax="" class="indexmenu_nojs">
+
+<ul class="idx">
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/res/wsl-x11" class="wikilink1" title="asc:res:wsl-x11">Folosire X11 în WSL2</a></div></li>
+</ul>
+</div></div>
+<ul>
+<li class="level1"><div class="li"> <a href="https://infrastructure.pages.upb.ro/wiki/docs/grid" class="urlextern" title="https://infrastructure.pages.upb.ro/wiki/docs/grid" rel="nofollow">Ghid folosire cluster</a></div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT4 SECTION "Resurse" [561-978] -->
+<h1 class="sectionedit5" id="gpu_related">GPU related</h1>
+<div class="level1">
+<ul>
+<li class="level1"><div class="li"> <a href="https://docs.nvidia.com/pdf/CUDA_C_Programming_Guide.pdf" class="urlextern" title="https://docs.nvidia.com/pdf/CUDA_C_Programming_Guide.pdf" rel="nofollow">CUDA C Programming</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://docs.nvidia.com/cuda/pdf/CUDA_Compiler_Driver_NVCC.pdf" class="urlextern" title="https://docs.nvidia.com/cuda/pdf/CUDA_Compiler_Driver_NVCC.pdf" rel="nofollow"> CUDA NVCC compiler</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://docs.nvidia.com/cuda/profiler-users-guide/index.html" class="urlextern" title="https://docs.nvidia.com/cuda/profiler-users-guide/index.html" rel="nofollow"> Visual Profiler</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://developer.download.nvidia.com/compute/cuda/9.1/Prod/docs/sidebar/CUDA_Toolkit_Release_Notes.pdf" class="urlextern" title="https://developer.download.nvidia.com/compute/cuda/9.1/Prod/docs/sidebar/CUDA_Toolkit_Release_Notes.pdf" rel="nofollow">CUDA 9.1 Toolkit</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://international.download.nvidia.com/tesla/pdf/tesla-k40-passive-board-spec.pdf" class="urlextern" title="http://international.download.nvidia.com/tesla/pdf/tesla-k40-passive-board-spec.pdf" rel="nofollow">NVIDIA Tesla K40M</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://www.nvidia.com/docs/IO/43395/NV_DS_Tesla_C2050_C2070_jul10_lores.pdf" class="urlextern" title="https://www.nvidia.com/docs/IO/43395/NV_DS_Tesla_C2050_C2070_jul10_lores.pdf" rel="nofollow">NVIDIA Tesla C2070</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://www.nvidia.com/docs/io/43395/nv_ds_tesla_c2050_c2070_apr10_final_lores.pdf" class="urlextern" title="http://www.nvidia.com/docs/io/43395/nv_ds_tesla_c2050_c2070_apr10_final_lores.pdf" rel="nofollow">Nvidia Tesla 2050/2070</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://cseweb.ucsd.edu/classes/fa12/cse141/pdf/09/GPU_Gahagan_FA12.pdf" class="urlextern" title="https://cseweb.ucsd.edu/classes/fa12/cse141/pdf/09/GPU_Gahagan_FA12.pdf" rel="nofollow">Nvidia CUDA Fermi/Tesla</a></div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT5 SECTION "GPU related" [979-1827] -->
+<h1 class="sectionedit6" id="lecture_related">Lecture related</h1>
+<div class="level1">
+<ul>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/extra/comutatoare" class="wikilink1" title="asc:extra:comutatoare">Comutatoare</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/extra/taxonomii" class="wikilink1" title="asc:extra:taxonomii">Taxonomia Flynn</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/extra/sbc" class="wikilink1" title="asc:extra:sbc">Single Board Computers</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/extra/epic" class="wikilink1" title="asc:extra:epic">Explicitly Parallel Instruction Computing</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/extra/intel" class="wikilink1" title="asc:extra:intel">Intel Parallel Studio</a></div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT6 SECTION "Lecture related" [1828-2100] -->
+<h1 class="sectionedit7" id="utilitare">Utilitare</h1>
+<div class="level1">
+<ul>
+<li class="level1"><div class="li"> <a href="http://en.wikipedia.org/wiki/Dinero_%28cache_simulator%29" class="urlextern" title="http://en.wikipedia.org/wiki/Dinero_%28cache_simulator%29" rel="nofollow">Dinero cache simulator</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://people.csail.mit.edu/pgbovine/python/tutor.html#mode=visualize" class="urlextern" title="http://people.csail.mit.edu/pgbovine/python/tutor.html#mode=visualize" rel="nofollow">Python Visual Interpretor</a></div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT7 SECTION "Utilitare" [2101-2318] -->
+<h1 class="sectionedit8" id="older_labs_resources">Older Labs &amp; Resources</h1>
+<div class="level1">
+<ul>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/cellcookbook/ncittutorial" class="wikilink1" title="asc:cellcookbook:ncittutorial">Cell - Rulare pe CLUSTER</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/cellcookbook/gdb" class="wikilink1" title="asc:cellcookbook:gdb">GDB on Cell BE</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/cellcookbook/mailboxhandson" class="wikilink1" title="asc:cellcookbook:mailboxhandson">Mailbox Hands-On</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/cellcookbook/aboutcell" class="wikilink1" title="asc:cellcookbook:aboutcell">Arhitectura Cell BE</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/cellcookbook/kickstart" class="wikilink1" title="asc:cellcookbook:kickstart">Kickstart Cell BE</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/cellcookbook/dma101" class="wikilink1" title="asc:cellcookbook:dma101">DMA 101</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/cellcookbook/refmanuals" class="wikilink1" title="asc:cellcookbook:refmanuals">Reference Manuals</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/cellcookbook/simulator" class="wikilink1" title="asc:cellcookbook:simulator">Folosirea simulatorului</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/cellcookbook/branch" class="wikilink1" title="asc:cellcookbook:branch"> Branch Prediction</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/cellcookbook/profiler" class="wikilink1" title="asc:cellcookbook:profiler"> Cell Profiler</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/cellcookbook/tutorial-eclipse" class="wikilink1" title="asc:cellcookbook:tutorial-eclipse">Tutorial Cell - Eclipse</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/cellcookbook/smc" class="wikilink1" title="asc:cellcookbook:smc">Software Managed Cache</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/cellcookbook/dmalists" class="wikilink1" title="asc:cellcookbook:dmalists">Liste DMA</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://ocw.cs.pub.ro/courses/asc/ibmworkshop/index" class="wikilink1" title="asc:ibmworkshop:index">Continut</a></div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT8 SECTION "Older Labs & Resources" [2319-] -->
+</div>
+<div class="toc_sidebar sidebar_box">
+<!-- TOC START -->
+<div id="sb__right__dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#tema_1_-_le_stats_sportif">Tema 1 - Le Stats Sportif</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#scopul_temei">Scopul temei</a></div></li>
+<li class="level2"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#enunt">Enunț</a></div>
+<ul class="toc">
+<li class="clear">
+<ul class="toc">
+<li class="level4"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#setul_de_date">Setul de date</a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#detalii_de_implementare">Detalii de implementare</a></div>
+<ul class="toc">
+<li class="clear">
+<ul class="toc">
+<li class="level4"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#mecanica_unui_request">Mecanica unui request</a></div></li>
+<li class="level4"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#requesturile_pe_care_trebuie_sa_le_implementati_sunt">Requesturile pe care trebuie să le implementați sunt</a></div></li>
+<li class="level4"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#server">Server</a></div></li>
+<li class="level4"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#structura_input-ului_si_a_output-ului">Structura input-ului și a output-ului</a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#testare">Testare</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#rularea_testelor">Rularea testelor</a></div></li>
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#unittesting">Unittesting</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#logging">Logging</a></div></li>
+<li class="level2"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#precizari_incarcare">Precizări încărcare</a></div></li>
+<li class="level2"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#punctare">Punctare</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#pylint">Pylint</a></div></li>
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#observatii">Observații</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#resurse_necesare_realizarii_temei">Resurse necesare realizării temei</a></div></li>
+<li class="level2"><div class="li"><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#suport_intrebari_si_clarificari">Suport, întrebări și clarificări</a></div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+</div>
+        </div>
+      
+    
+      <div class="stylefoot">
+        <div class="meta">
+          <div class="user">
+                    </div>
+          <div class="doc">
+          asc/teme/tema1.txt · Last modified: 2024/04/06 18:12 by eduard.staniloiu          </div>
+        </div>
+      </div>
+
+    <div class="clearer"></div>
+
+    
+                <div class="bar" id="bar__bottom">
+      <div class="bar-left">
+        <a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1?do=revisions" class="action revs" accesskey="o" rel="nofollow" title="Old revisions [O]">Old revisions</a>      </div>
+      <div class="bar-right">
+        <a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1?do=media&amp;ns=asc%3Ateme" class="action media" rel="nofollow" title="Media Manager">Media Manager</a><a href="https://ocw.cs.pub.ro/courses/asc/teme/tema1#dokuwiki__top" class="action top" accesskey="t" rel="nofollow" title="Back to top [T]">Back to top</a>      </div>
+    </div>
+    <div class="clearer"></div>
+            
+    <div align="center" class="footerinc">
+  <div class="license"><a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img src="./Tema 1 - Le Stats Sportif [CS Open CourseWare]_files/cc-by-sa.png" alt="CC Attribution-Share Alike 3.0 Unported"></a></div>
+  <a target="_blank" href="http://www.chimeric.de/" title="www.chimeric.de"><img src="./Tema 1 - Le Stats Sportif [CS Open CourseWare]_files/button-chimeric-de.png" width="80" height="15" alt="www.chimeric.de" border="0"></a>
+
+  <a target="_blank" href="http://jigsaw.w3.org/css-validator/check/referer" title="Valid CSS"><img src="./Tema 1 - Le Stats Sportif [CS Open CourseWare]_files/button-css.png" width="80" height="15" alt="Valid CSS" border="0"></a>
+
+  <a target="_blank" href="http://wiki.splitbrain.org/wiki:dokuwiki" title="Driven by DokuWiki"><img src="./Tema 1 - Le Stats Sportif [CS Open CourseWare]_files/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" border="0"></a>
+
+  <a target="_blank" href="http://www.firefox-browser.de/" title="do yourself a favour and use a real browser - get firefox"><img src="./Tema 1 - Le Stats Sportif [CS Open CourseWare]_files/button-firefox.png" width="80" height="15" alt="do yourself a favour and use a real browser - get firefox!!" border="0"></a>
+  
+  <a target="_blank" href="https://ocw.cs.pub.ro/courses/feed.php" title="Recent changes RSS feed"><img src="./Tema 1 - Le Stats Sportif [CS Open CourseWare]_files/button-rss.png" width="80" height="15" alt="Recent changes RSS feed" border="0"></a>
+
+  <a target="_blank" href="http://validator.w3.org/check/referer" title="Valid XHTML 1.0"><img src="./Tema 1 - Le Stats Sportif [CS Open CourseWare]_files/button-xhtml.png" width="80" height="15" alt="Valid XHTML 1.0" border="0"></a>
+</div>
+
+  </div>
+</div>
+
+<div class="no"><img src="./Tema 1 - Le Stats Sportif [CS Open CourseWare]_files/indexer.php" width="2" height="1" alt=""></div>
+
+
+</body></html>
